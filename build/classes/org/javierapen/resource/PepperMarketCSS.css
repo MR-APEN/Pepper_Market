@@ -1,0 +1,47 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 18/04/2024, 02:09:46 PM
+    Author     : informatica
+*/
+
+.menu-bar{
+    -fx-background-color: #ff0000;
+    -fx-opacity: 0.5;
+    -fx-border-width: 2.0;
+}
+
+.button1 {
+    -fx-background-color: transparent;
+}
+
+.button2{
+    -fx-background-color: #ff0000;
+    -fx-border-color: black;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+}
+
+.button3:hover{
+    -fx-background-color: #ff0000;
+    -fx-font-size: 22px;
+    -fx-effect: dropshadow(three-pass-box, black,20,0,0,0);
+    
+}
+
+.button4:hover {
+    -fx-font-size: 22px; 
+}
+
+.table-view .column-header,
+.table-view .column-header-background.filler{
+    -fx-cell-size: 20;
+    -fx-background-color: #5D9E3B;
+}
+
+.table-row-cell:selected{
+    -fx-background-color:#ff0000
+}

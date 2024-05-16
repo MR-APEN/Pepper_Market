@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.javierapen.controller.MenuTipoProductoController">
+   <children>
+      <ImageView fitHeight="450.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/MenuTipoProductoView.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnRegresar" layoutX="-6.0" mnemonicParsing="false" onAction="#regresar" prefHeight="76.0" prefWidth="98.0" styleClass="button1" stylesheets="@../resource/PepperMarketCSS.css">
+         <graphic>
+            <ImageView fitHeight="68.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/casa.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <TableView fx:id="tblTipoProducto" layoutX="53.0" layoutY="160.0" onMouseClicked="#selecionarDatos" prefHeight="276.0" prefWidth="343.0">
+        <columns>
+          <TableColumn fx:id="colCodigoTP" prefWidth="91.0" text="codigoTipoProducto" />
+          <TableColumn fx:id="colDescripcionTP" prefWidth="251.0" text="Descripcion" />
+        </columns>
+      </TableView>
+      <GridPane layoutX="53.0" layoutY="105.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="131.0" minWidth="10.0" prefWidth="125.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="75.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Codigo Tipo Producto" textFill="WHITE" />
+            <TextField fx:id="txtCodigoTP" GridPane.columnIndex="1" />
+         </children>
+      </GridPane>
+      <GridPane layoutX="286.0" layoutY="107.0" prefHeight="30.0" prefWidth="418.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="91.0" minWidth="10.0" prefWidth="30.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="331.0" minWidth="10.0" prefWidth="331.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Descripcion" textFill="WHITE" />
+            <TextField fx:id="txtDescripcionTP" prefHeight="25.0" prefWidth="257.0" GridPane.columnIndex="1" />
+         </children>
+      </GridPane>
+      <Button fx:id="btnAgregar" layoutX="435.0" layoutY="201.0" mnemonicParsing="false" onAction="#agregar" prefHeight="50.0" prefWidth="135.0" styleClass="button3" stylesheets="@../resource/PepperMarketCSS.css" text="Agregar">
+         <graphic>
+            <ImageView fx:id="imgAgregar" fitHeight="42.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/agregar-tipoproducto.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btnEliminar" layoutX="610.0" layoutY="201.0" mnemonicParsing="false" onAction="#eliminar" prefHeight="49.0" prefWidth="135.0" styleClass="button3" stylesheets="@../resource/PepperMarketCSS.css" text="Eliminar">
+         <graphic>
+            <ImageView fx:id="imgEliminar" fitHeight="41.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/eliminar-tipoproducto.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btnReporte" layoutX="610.0" layoutY="299.0" mnemonicParsing="false" onAction="#reporte" prefHeight="49.0" prefWidth="135.0" styleClass="button3" stylesheets="@../resource/PepperMarketCSS.css" text="Reporte">
+         <graphic>
+            <ImageView fx:id="imgReporte" fitHeight="41.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/reporte.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btnEditar" layoutX="435.0" layoutY="299.0" mnemonicParsing="false" onAction="#editar" prefHeight="49.0" prefWidth="135.0" styleClass="button3" stylesheets="@../resource/PepperMarketCSS.css" text="Editar">
+         <graphic>
+            <ImageView fx:id="imgEditar" fitHeight="39.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/editar-tipoproducto.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+   </children>
+</AnchorPane>
