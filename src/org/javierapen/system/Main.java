@@ -17,6 +17,7 @@ import org.javierapen.controller.MenuCargoEmpleadoController;
 import org.javierapen.controller.MenuClienteController;
 import org.javierapen.controller.MenuComprasController;
 import org.javierapen.controller.MenuPrincipalController;
+import org.javierapen.controller.MenuProductosController;
 import org.javierapen.controller.MenuProgramadorController;
 import org.javierapen.controller.MenuProveedorController;
 import org.javierapen.controller.MenuTipoProductoController;
@@ -119,6 +120,15 @@ public class Main extends Application {
         try{
             MenuCargoEmpleadoController menuCargoEmpleadoView = (MenuCargoEmpleadoController)cambiarEscena("MenuCargoEmpleadoView.fxml",925,522);
             menuCargoEmpleadoView.setEscenarioPrincipal(this);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    public void menuProductosView(){
+        try{
+            MenuProductosController menuProductosView = (MenuProductosController)cambiarEscena("MenuProductosView.fxml",979,552);
+            menuProductosView.setEscenarioPrincipal(this);
         }catch(Exception e){
             e.printStackTrace();
         }

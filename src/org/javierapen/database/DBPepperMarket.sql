@@ -55,9 +55,78 @@ create table Empleados(
     sueldo decimal (10,2),
     direccion varchar(150),
     turno varchar(15),
-    CargoEmpleado_codigoCargoEmpleado int not null,
-    constraint FK_CargoEmpleado_CargoEmpleado foreign key (CargoEmpleado_codigoCargoEmpleado) references CargoEmpleado(codigoCargoEmpleado)
+    codigoCargoEmpleado int not null,
+    primary key PK_codigoEmpleados(codigoEmpleado),
+    constraint FK_CargoEmpleado_CargoEmpleado foreign key (codigoCargoEmpleado) references CargoEmpleado(codigoCargoEmpleado)
 );
+
+create table Productos(
+	codigoProducto varchar(15),
+    descripcionProducto varchar(45),
+    precioUnitario decimal(10,2),
+    precioDocena decimal(10,2),
+    precioMayor decimal(10,2),
+	existencia int,
+    tipoProducto int,
+    proveedores int,
+    primary key PK_codigoProducto(codigoProducto),
+    constraint FK_Productos_TipoProducto foreign key (tipoProducto)  references TipoProducto(codigoTipoProducto),
+    constraint FK_Productos_Proveedores foreign key (proveedores) references Proveedores(codigoProveedor)    
+);
+
+create table DetalleCompra(
+	codigoDetalleCompra int,
+    costoUnitario decimal(10,2),
+    cantidad int,
+    codigoProducto varchar(15),
+    numeroDocumento int,
+    primary key PK_codigoDetalleCompra(codigoDetalleCompra),
+    constraint FK_DetalleCompra_Productos foreign key (codigoProducto) references Productos(codigoProducto),
+    constraint FK_DetalleCompra_Compras foreign key (numeroDocumento) references Compras(numeroDocumento)
+);
+
+create table TelofonoProveedor(
+	codigoTelefonoProveedor int,
+    numeroPrincipal varchar(8),
+    numeroSecundario varchar(8),
+    observaciones varchar(45),
+    codigoProveedor int,
+    primary key PK_codigoTelefonoProveedor(codigoTelefonoProveedor),
+    constraint FK_TelefonoProveedor_Proveedores foreign key (codigoProveedor) references Proveedores(codigoProveedor)
+);
+
+create table EmailProveedor(
+	codigoEmailProveedor int,
+    emailProveedor varchar(50),
+    descripcion varchar(100),
+    codigoProveedor int,
+    primary key PK_codigoEmailProveedor(codigoEmailProveedor),
+    constraint FK_EmailProveedor_Proveedores foreign key (codigoProveedor) references Proveedores(codigoProveedor)
+);
+
+create table Factura(
+	numeroFactura int,
+    estado varchar(50),
+    totalFactura decimal(10,2),
+    fechaFactura varchar(45),
+    codigoCliente int,
+    codigoEmpleado int,
+    primary key PK_numeroFactura(numeroFactura),
+    constraint FK_Factura_Clientes foreign key (codigoCliente) references Clientes(codigoCliente),
+    constraint FK_Factura_Empleados foreign key (codigoEmpleado) references Empleados(codigoEmpleado)
+);
+
+create table DetalleFactura(
+	codigoDetalleFactura int,
+    precioUnitario decimal(10,2),
+    cantidad int,
+    numeroFactura int,
+    codigoProducto varchar(15),
+    primary key PK_codigoDetalleFactura (codigoDetalleFactura),
+    constraint FK_DetalleFactura_Factura  foreign key (numeroFactura) references Factura(numeroFactura),
+    constraint FK_DetalleFactura_Productos foreign key (codigoProducto) references Productos(codigoProducto)
+);
+
 -- ---------------------------------------------- CLIENTES -----------------------------------------------------------------
 
 Delimiter $$
@@ -382,3 +451,76 @@ Delimiter $$
 	End $$
 Delimiter ;
 
+-- ---------------------------------------- PRODUCTOS ------------------------------
+-- ------------------------------------ AGREGAR--------------------------------------
+Delimiter $$
+	create procedure sp_AgregarProductos(in codigoProducto varchar(15), descripcionProducto varchar(45), precioUnitario decimal(10,2), precioDocena decimal(10,2)
+    , precioMayor decimal(10,2), existencia int, tipoProducto int, proveedores int)
+    Begin
+		Insert into Productos (codigoProducto,descripcionProducto,precioUnitario,precioDocena,precioMayor,existencia,tipoProducto,proveedores)
+        values (codigoProducto,descripcionProducto,precioUnitario,precioDocena,precioMayor,existencia,tipoProducto,proveedores);
+	End $$
+Delimiter ;
+
+call sp_AgregarProductos("ABC123","Manzana Verde",4.99,59.88,69.99,15,1,1);
+
+-- ----------------------------------- LISTAR ---------------------------------------
+Delimiter $$
+	create procedure sp_ListarProductos()
+    Begin
+		Select
+        P.codigoProducto,
+        P.descripcionProducto,
+        P.precioUnitario,
+        P.precioDocena,
+        P.precioMayor,
+        P.existencia,
+        P.tipoProducto,
+        P.proveedores
+        From Productos P;
+	End $$
+Delimiter ;
+
+-- ----------------------------------- BUSCAR -----------------------------------------
+Delimiter $$
+	create procedure sp_BuscarProductos(in _codigoProducto varchar(45))
+    Begin
+		Select 
+        P.descripcionProducto,
+        P.precioUnitario,
+        P.precioDocena,
+        P.precioMayor,
+        P.existencia,
+        P.tipoProducto,
+        P.proveedores
+        From Productos P
+        Where codigoProducto = _codigoProducto;
+	End $$
+Delimiter ;
+
+-- ---------------------------------- ELIMINAR ---------------------------------------
+Delimiter $$
+	create procedure sp_EliminarProductos(in _codigoProducto varchar(45))
+    Begin
+		Delete from Productos
+        Where codigoProducto = _codigoProducto;
+	End $$
+Delimiter ;
+
+-- --------------------------------- EDITAR ------------------------------------------
+Delimiter $$
+	create procedure sp_EditarProductos(in _codigoProducto varchar(45), _descripcionProducto varchar(45), _precioUnitario decimal(10,2), _precioDocena decimal(10,2),
+    _precioMayor decimal(10,2), _existencia int, _codigoTipoProducto int , _codigoProveedor int)
+    Begin
+		Update Productos
+        set
+        descripcionProducto = _descripcionProducto,
+        precioUnitario = _precioUnitario,
+        precioDocena = _precioDocena,
+        precioMayor = _precioMayor,
+        existencia = _existencia,
+        tipoProducto = _codigoTipoProducto,
+        proveedores = _codigoProveedor
+        Where codigoProducto = _codigoProducto;
+	End $$
+Delimiter ;
