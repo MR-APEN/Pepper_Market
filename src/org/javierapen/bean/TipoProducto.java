@@ -10,6 +10,7 @@ package org.javierapen.bean;
  * @author informatica
  */
 public class TipoProducto {
+
     private int codigoTipoProducto;
     private String descripcion;
 
@@ -36,6 +37,9 @@ public class TipoProducto {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return getCodigoTipoProducto() + " | " + getDescripcion();
+    }
 }

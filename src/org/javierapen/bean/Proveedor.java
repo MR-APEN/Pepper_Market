@@ -10,6 +10,7 @@ package org.javierapen.bean;
  * @author informatica
  */
 public class Proveedor {
+
     private int codigoProveedor;
     private String nitProveedor;
     private String nombreProveedor;
@@ -96,6 +97,9 @@ public class Proveedor {
     public void setPaginaWeb(String paginaWeb) {
         this.paginaWeb = paginaWeb;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return getCodigoProveedor() + " | " + getNombreProveedor();
+    }
 }
