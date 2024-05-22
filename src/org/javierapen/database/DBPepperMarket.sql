@@ -67,10 +67,10 @@ create table Productos(
     precioDocena decimal(10,2),
     precioMayor decimal(10,2),
 	existencia int,
-    tipoProducto int,
+    codigoTipoProducto int,
     proveedores int,
     primary key PK_codigoProducto(codigoProducto),
-    constraint FK_Productos_TipoProducto foreign key (tipoProducto)  references TipoProducto(codigoTipoProducto),
+    constraint FK_Productos_TipoProducto foreign key (codigoTipoProducto)  references TipoProducto(codigoTipoProducto),
     constraint FK_Productos_Proveedores foreign key (proveedores) references Proveedores(codigoProveedor)    
 );
 
@@ -295,7 +295,7 @@ Delimiter ;
 
 -- ----------------------------------- BUSCAR -----------------------------------------
 Delimiter $$
-	create procedure sp_BuscarTipoProducto(in codigoTipoProducto int)
+	create procedure sp_BuscarTipoProducto(in _codigoTipoProducto int)
     Begin
 		Select
         TP.descripcion
@@ -443,10 +443,10 @@ Delimiter ;
 -- ------------------------------------ AGREGAR--------------------------------------
 Delimiter $$
 	create procedure sp_AgregarProductos(in codigoProducto varchar(15), descripcionProducto varchar(45), precioUnitario decimal(10,2), precioDocena decimal(10,2)
-    , precioMayor decimal(10,2), existencia int, tipoProducto int, proveedores int)
+    , precioMayor decimal(10,2), existencia int, codigoTipoProducto int, proveedores int)
     Begin
-		Insert into Productos (codigoProducto,descripcionProducto,precioUnitario,precioDocena,precioMayor,existencia,tipoProducto,proveedores)
-        values (codigoProducto,descripcionProducto,precioUnitario,precioDocena,precioMayor,existencia,tipoProducto,proveedores);
+		Insert into Productos (codigoProducto,descripcionProducto,precioUnitario,precioDocena,precioMayor,existencia,codigoTipoProducto,proveedores)
+        values (codigoProducto,descripcionProducto,precioUnitario,precioDocena,precioMayor,existencia,codigoTipoProducto,proveedores);
 	End $$
 Delimiter ;
 
@@ -461,7 +461,7 @@ Delimiter $$
         P.precioDocena,
         P.precioMayor,
         P.existencia,
-        P.tipoProducto,
+        P.codigoTipoProducto,
         P.proveedores
         From Productos P;
 	End $$
@@ -477,7 +477,7 @@ Delimiter $$
         P.precioDocena,
         P.precioMayor,
         P.existencia,
-        P.tipoProducto,
+        P.codigoTipoProducto,
         P.proveedores
         From Productos P
         Where codigoProducto = _codigoProducto;
@@ -505,7 +505,7 @@ Delimiter $$
         precioDocena = _precioDocena,
         precioMayor = _precioMayor,
         existencia = _existencia,
-        tipoProducto = _codigoTipoProducto,
+        codigoTipoProducto = _codigoTipoProducto,
         proveedores = _codigoProveedor
         Where codigoProducto = _codigoProducto;
 	End $$
@@ -990,6 +990,7 @@ call sp_AgregarEmpleados(01,"Javier","Apen",350.25,"Ciudad Quetzal","Vespetina",
 call sp_AgregarFactura(01,"Vigente",46.00,"2024-05-10",02,01);
 
 call sp_AgregarDetalleFactura(01,0.00,1,01,"ABC123");
+
 
 call sp_ListarProductos();
 call sp_ListarCompras();

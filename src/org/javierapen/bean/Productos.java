@@ -7,7 +7,7 @@ package org.javierapen.bean;
 
 /**
  *
- * @author informatica
+ * @author 50258
  */
 public class Productos {
     private String codigoProducto;
@@ -16,21 +16,21 @@ public class Productos {
     private double precioDocena;
     private double precioMayor;
     private int existencia;
-    private int tipoProducto;
-    private int proveedores;
+    private int codigoTipoProducto;
+    private int codigoProveedor;
 
     public Productos() {
     }
 
-    public Productos(String codigoProducto, String descripcionProducto, double precioUnitario, double precioDocena, double precioMayor, int existencia, int tipoProducto, int proveedores) {
+    public Productos(String codigoProducto, String descripcionProducto, double precioUnitario, double precioDocena, double precioMayor, int existencia, int codigoTipoProducto, int codigoProveedor) {
         this.codigoProducto = codigoProducto;
         this.descripcionProducto = descripcionProducto;
         this.precioUnitario = precioUnitario;
         this.precioDocena = precioDocena;
         this.precioMayor = precioMayor;
         this.existencia = existencia;
-        this.tipoProducto = tipoProducto;
-        this.proveedores = proveedores;
+        this.codigoTipoProducto = codigoTipoProducto;
+        this.codigoProveedor = codigoProveedor;
     }
 
     public String getCodigoProducto() {
@@ -81,20 +81,20 @@ public class Productos {
         this.existencia = existencia;
     }
 
-    public int getTipoProducto() {
-        return tipoProducto;
+    public int getCodigoTipoProducto() {
+        return codigoTipoProducto;
     }
 
-    public void setTipoProducto(int tipoProducto) {
-        this.tipoProducto = tipoProducto;
+    public void setCodigoTipoProducto(int codigoTipoProducto) {
+        this.codigoTipoProducto = codigoTipoProducto;
     }
 
-    public int getProveedores() {
-        return proveedores;
+    public int getCodigoProveedor() {
+        return codigoProveedor;
     }
 
-    public void setProveedores(int proveedores) {
-        this.proveedores = proveedores;
+    public void setCodigoProveedor(int codigoProveedor) {
+        this.codigoProveedor = codigoProveedor;
     }
     
     

@@ -35,37 +35,34 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Código Producto" />
-            <Label text="Descripcion Prodcto" GridPane.rowIndex="1" />
-            <Label text="Precio Unitario" GridPane.rowIndex="2" />
-            <Label text="Precio Docena" GridPane.columnIndex="2" />
-            <Label text="Precio Mayor" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Label text="imagen Producto" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Label text="Existencia" GridPane.columnIndex="4" />
-            <Label text="Tipo Producto" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-            <Label text="Proveedores" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+            <Label text="Código Producto" textFill="WHITE" />
+            <Label text="Descripcion Prodcto" textFill="WHITE" GridPane.rowIndex="1" />
+            <Label text="Precio Unitario" textFill="WHITE" GridPane.rowIndex="2" />
+            <Label text="Precio Docena" textFill="WHITE" GridPane.columnIndex="2" />
+            <Label text="Precio Mayor" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Label text="Existencia" textFill="WHITE" GridPane.columnIndex="4" />
+            <Label text="Tipo Producto" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            <Label text="Proveedores" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="2" />
             <TextField fx:id="txtCodigoP" GridPane.columnIndex="1" />
             <TextField fx:id="txtDescripcionP" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField fx:id="txtPrecioUnitarioP" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField fx:id="txtPrecioDocenaP" GridPane.columnIndex="3" />
             <TextField fx:id="txtPrecioMayorP" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <TextField fx:id="txtImagenP" GridPane.columnIndex="3" GridPane.rowIndex="2" />
             <TextField fx:id="txtExistenciaP" GridPane.columnIndex="5" />
             <ComboBox fx:id="cmbTipoProducto" prefWidth="150.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
             <ComboBox fx:id="cmbProveedores" prefWidth="150.0" GridPane.columnIndex="5" GridPane.rowIndex="2" />
          </children>
       </GridPane>
-      <TableView fx:id="tblProductos" layoutX="216.0" layoutY="250.0" prefHeight="292.0" prefWidth="732.0">
+      <TableView fx:id="tblProductos" layoutX="216.0" layoutY="250.0" onMouseClicked="#selecionarElementos" prefHeight="292.0" prefWidth="732.0">
         <columns>
           <TableColumn fx:id="colCodigoP" prefWidth="75.0" text="Codigo P" />
-          <TableColumn fx:id="colDescripcionP" prefWidth="75.0" text="Descripcion P" />
-            <TableColumn fx:id="colPrecioUnidadP" prefWidth="75.0" text="Precio U " />
+          <TableColumn fx:id="colDescripcionP" prefWidth="92.0" text="Descripcion P" />
+            <TableColumn fx:id="colPrecioUnidadP" prefWidth="58.4000244140625" text="Precio U " />
             <TableColumn fx:id="colPrecioDocenaP" prefWidth="75.0" text="Precio D" />
             <TableColumn fx:id="colPrecioMayorP" prefWidth="75.0" text="Precio Mayor" />
-            <TableColumn fx:id="colImagenP" prefWidth="75.0" text="Imagen P" />
-            <TableColumn fx:id="colExistenciaP" prefWidth="75.0" text="Existencia" />
-            <TableColumn fx:id="colTipoProductoP" prefWidth="97.0" text="Tipo Producto" />
-            <TableColumn fx:id="colProveedorP" prefWidth="109.0" text="Proveedores" />
+            <TableColumn fx:id="colExistenciaP" prefWidth="91.20001220703125" text="Existencia" />
+            <TableColumn fx:id="colTipoProductoP" prefWidth="111.20001220703125" text="Tipo Producto" />
+            <TableColumn fx:id="colProveedorP" prefWidth="148.7999267578125" text="Proveedores" />
         </columns>
       </TableView>
       <Button fx:id="btnAgregar" layoutX="57.0" layoutY="225.0" mnemonicParsing="false" onAction="#agregar" prefHeight="50.0" prefWidth="135.0" styleClass="button3" stylesheets="@../resource/PepperMarketCSS.css" text="Agregar">
@@ -77,7 +74,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnEliminar" layoutX="57.0" layoutY="297.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="135.0" styleClass="button3" stylesheets="@../resource/PepperMarketCSS.css" text="Eliminar">
+      <Button fx:id="btnEliminar" layoutX="57.0" layoutY="297.0" mnemonicParsing="false" onAction="#eliminar" prefHeight="49.0" prefWidth="135.0" styleClass="button3" stylesheets="@../resource/PepperMarketCSS.css" text="Eliminar">
          <graphic>
             <ImageView fx:id="imgEliminar" fitHeight="41.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -86,7 +83,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnEditar" layoutX="57.0" layoutY="363.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="135.0" styleClass="button3" stylesheets="@../resource/PepperMarketCSS.css" text="Editar">
+      <Button fx:id="btnEditar" layoutX="57.0" layoutY="363.0" mnemonicParsing="false" onAction="#editar" prefHeight="49.0" prefWidth="135.0" styleClass="button3" stylesheets="@../resource/PepperMarketCSS.css" text="Editar">
          <graphic>
             <ImageView fx:id="imgEditar" fitHeight="39.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -95,7 +92,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnReporte" layoutX="57.0" layoutY="430.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="135.0" styleClass="button3" stylesheets="@../resource/PepperMarketCSS.css" text="Reporte">
+      <Button fx:id="btnReporte" layoutX="57.0" layoutY="430.0" mnemonicParsing="false" onAction="#reporte" prefHeight="49.0" prefWidth="135.0" styleClass="button3" stylesheets="@../resource/PepperMarketCSS.css" text="Reporte">
          <graphic>
             <ImageView fx:id="imgReporte" fitHeight="41.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                <image>
