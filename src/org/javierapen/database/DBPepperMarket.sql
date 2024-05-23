@@ -697,7 +697,7 @@ Delimiter ;
 -- -----------------------------------  EMPLEADOS ----------------------------------------
 -- ----------------------------------- AGREGAR ------------------------------------
 Delimiter $$
-	create procedure sp_AgregarEmpleados(in codigoEmpleado int,in nombreEmpelado varchar(50), in apellidoEmpleado varchar(50), in sueldo decimal(10,2),  in direccion varchar(150), in turno varchar(15), in codigoCargoEmpleado int)
+	create procedure sp_AgregarEmpleados(in codigoEmpleado int,in nombreEmpleado varchar(50), in apellidoEmpleado varchar(50), in sueldo decimal(10,2),  in direccion varchar(150), in turno varchar(15), in codigoCargoEmpleado int)
     Begin
 		Insert into Empleados(codigoEmpleado,nombreEmpleado,apellidoEmpleado,sueldo,direccion,turno,codigoCargoEmpleado)
 			values(codigoEmpleado,nombreEmpleado,apellidoEmpleado,sueldo,direccion,turno,codigoCargoEmpleado);
@@ -748,7 +748,7 @@ Delimiter ;
 
 -- --------------------------------- EDITAR ------------------------------------------
 Delimiter $$
-	create procedure sp_EditarEmpleados(in _codigoEmpleado int,in _nombreEmpelado varchar(50), in _apellidoEmpleado varchar(50), in _sueldo decimal(10,2),  in _direccion varchar(150), in _turno varchar(15), in _codigoCargoEmpleado int)
+	create procedure sp_EditarEmpleados(in _codigoEmpleado int,in _nombreEmpleado varchar(50), in _apellidoEmpleado varchar(50), in _sueldo decimal(10,2),  in _direccion varchar(150), in _turno varchar(15), in _codigoCargoEmpleado int)
     Begin
 		Update Empleados E
         Set
