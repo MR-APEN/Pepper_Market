@@ -178,7 +178,7 @@ public class MenuTelefonoProveedorController implements Initializable {
     public void guardar() {
         TelefonoProveedor registro = new TelefonoProveedor();
         registro.setCodigoTelefonoProveedor(Integer.parseInt(txtCodigoTP.getText()));
-        registro.setCodigoProveedor(((TelefonoProveedor) cmbProveedor.getSelectionModel().getSelectedItem()).getCodigoProveedor());
+        registro.setCodigoProveedor(((Proveedor) cmbProveedor.getSelectionModel().getSelectedItem()).getCodigoProveedor());
         registro.setNumeroPrincipal(txtNumeroP.getText());
         registro.setNumeroSecundario(txtNumeroS.getText());
         registro.setObservaciones(txtObservacionesTP.getText());
@@ -261,7 +261,7 @@ public class MenuTelefonoProveedorController implements Initializable {
             PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_EditarTelefonoProveedor(?,?,?,?,?)}");
             TelefonoProveedor registro = (TelefonoProveedor) tblTelefonoP.getSelectionModel().getSelectedItem();
             registro.setCodigoTelefonoProveedor(Integer.parseInt(txtCodigoTP.getText()));
-            registro.setCodigoProveedor(((TelefonoProveedor) cmbProveedor.getSelectionModel().getSelectedItem()).getCodigoProveedor());
+            registro.setCodigoProveedor(((Proveedor) cmbProveedor.getSelectionModel().getSelectedItem()).getCodigoProveedor());
             registro.setNumeroPrincipal(txtNumeroP.getText());
             registro.setNumeroSecundario(txtNumeroS.getText());
             registro.setObservaciones(txtObservacionesTP.getText());
