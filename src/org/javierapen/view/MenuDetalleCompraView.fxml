@@ -13,15 +13,14 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="552.0" prefWidth="979.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="552.0" prefWidth="979.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.javierapen.controller.MenuDetalleCompraController">
    <children>
       <ImageView fitHeight="552.0" fitWidth="979.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../image/MenuDetalleCompraView.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnRegresar" mnemonicParsing="false" prefHeight="105.0" prefWidth="107.0" styleClass="button1" stylesheets="@../resource/PepperMarketCSS.css">
+      <Button fx:id="btnRegresar" mnemonicParsing="false" onAction="#regresar" prefHeight="105.0" prefWidth="107.0" styleClass="button1" stylesheets="@../resource/PepperMarketCSS.css">
          <graphic>
             <ImageView fitHeight="68.0" fitWidth="78.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -30,7 +29,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnAgregar" layoutX="67.0" layoutY="235.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="135.0" styleClass="button3" stylesheets="@../resource/PepperMarketCSS.css" text="Agregar">
+      <Button fx:id="btnAgregar" layoutX="67.0" layoutY="235.0" mnemonicParsing="false" onAction="#agregar" prefHeight="50.0" prefWidth="135.0" styleClass="button3" stylesheets="@../resource/PepperMarketCSS.css" text="Agregar">
          <graphic>
             <ImageView fx:id="imgAgregar" fitHeight="42.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -39,7 +38,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnEliminar" layoutX="67.0" layoutY="307.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="135.0" styleClass="button3" stylesheets="@../resource/PepperMarketCSS.css" text="Eliminar">
+      <Button fx:id="btnEliminar" layoutX="67.0" layoutY="307.0" mnemonicParsing="false" onAction="#eliminar" prefHeight="49.0" prefWidth="135.0" styleClass="button3" stylesheets="@../resource/PepperMarketCSS.css" text="Eliminar">
          <graphic>
             <ImageView fx:id="imgEliminar" fitHeight="41.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -48,7 +47,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnEditar" layoutX="67.0" layoutY="373.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="135.0" styleClass="button3" stylesheets="@../resource/PepperMarketCSS.css" text="Editar">
+      <Button fx:id="btnEditar" layoutX="67.0" layoutY="373.0" mnemonicParsing="false" onAction="#editar" prefHeight="49.0" prefWidth="135.0" styleClass="button3" stylesheets="@../resource/PepperMarketCSS.css" text="Editar">
          <graphic>
             <ImageView fx:id="imgEditar" fitHeight="39.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -57,7 +56,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnReporte" layoutX="67.0" layoutY="440.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="135.0" styleClass="button3" stylesheets="@../resource/PepperMarketCSS.css" text="Reporte">
+      <Button fx:id="btnReporte" layoutX="67.0" layoutY="440.0" mnemonicParsing="false" onAction="#reporte" prefHeight="49.0" prefWidth="135.0" styleClass="button3" stylesheets="@../resource/PepperMarketCSS.css" text="Reporte">
          <graphic>
             <ImageView fx:id="imgReporte" fitHeight="41.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -66,7 +65,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <TableView layoutX="277.0" layoutY="260.0" prefHeight="274.0" prefWidth="651.0">
+      <TableView fx:id="tblDetalleCompra" layoutX="277.0" layoutY="260.0" onMouseClicked="#selecionarElementos" prefHeight="274.0" prefWidth="651.0">
         <columns>
           <TableColumn fx:id="colCodigoDC" prefWidth="73.5999755859375" text="Codigo " />
           <TableColumn fx:id="colCostoUniDC" prefWidth="95.199951171875" text="Costo Unitario" />

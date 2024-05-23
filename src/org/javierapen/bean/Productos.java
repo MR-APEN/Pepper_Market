@@ -98,4 +98,8 @@ public class Productos {
     }
     
     
+    @Override
+    public String toString(){
+        return getCodigoProducto() + " | " + getDescripcionProducto();
+    }
 }

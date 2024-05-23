@@ -7,14 +7,14 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="394.0" prefWidth="591.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.javierapen.controller.MenuPrincipalController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="512.0" prefWidth="784.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.javierapen.controller.MenuPrincipalController">
    <children>
-      <ImageView fitHeight="443.0" fitWidth="591.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="512.0" fitWidth="784.0" layoutX="8.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../image/fondo.png" />
          </image>
       </ImageView>
-      <MenuBar fx:id="btnMenuBar" layoutX="14.0" layoutY="14.0" prefHeight="26.0" prefWidth="213.0">
+      <MenuBar fx:id="btnMenuBar" layoutX="14.0" layoutY="14.0" prefHeight="21.0" prefWidth="209.0">
         <menus>
           <Menu mnemonicParsing="false" text="Modulo">
             <items>
@@ -25,6 +25,7 @@
                   <MenuItem fx:id="btnMenuTipoProducto" mnemonicParsing="false" onAction="#clicTipoProducto" text="Tipo Producto" />
                   <MenuItem fx:id="btnMenuCompras" mnemonicParsing="false" onAction="#clicCompras" text="Compras" />
                   <MenuItem fx:id="btnMenuCargoEmpleado" mnemonicParsing="false" onAction="#clicCargoEmpleado" text="Cargo Empleado" />
+                  <MenuItem fx:id="btnMenuDetalleCompra" mnemonicParsing="false" onAction="#clicDetalleCompra" text="Detalle Compra" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Reportes">

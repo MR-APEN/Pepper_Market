@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import org.javierapen.controller.MenuCargoEmpleadoController;
 import org.javierapen.controller.MenuClienteController;
 import org.javierapen.controller.MenuComprasController;
+import org.javierapen.controller.MenuDetalleCompraController;
 import org.javierapen.controller.MenuPrincipalController;
 import org.javierapen.controller.MenuProductosController;
 import org.javierapen.controller.MenuProgramadorController;
@@ -79,57 +80,66 @@ public class Main extends Application {
         }
 
     }
-    
+
     public void menuProgramadorView() {
-        try{
-            MenuProgramadorController menuProgramadorView = (MenuProgramadorController)cambiarEscena("MenuProgramadorView.fxml",721,405);
+        try {
+            MenuProgramadorController menuProgramadorView = (MenuProgramadorController) cambiarEscena("MenuProgramadorView.fxml", 721, 405);
             menuProgramadorView.setEscenarioPrincipal(this);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
-    public void menuProveedorView(){
-        try{
-            MenuProveedorController menuProveedorView = (MenuProveedorController)cambiarEscena("MenuProveedorView.fxml",873,490);
+
+    public void menuProveedorView() {
+        try {
+            MenuProveedorController menuProveedorView = (MenuProveedorController) cambiarEscena("MenuProveedorView.fxml", 873, 490);
             menuProveedorView.setEscenarioPrincipal(this);
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
-    public void menuTipoProductoView(){
-        try{
-            MenuTipoProductoController menuTipoProductoView = (MenuTipoProductoController)cambiarEscena("MenuTipoProductoView.fxml",800,450);
+
+    public void menuTipoProductoView() {
+        try {
+            MenuTipoProductoController menuTipoProductoView = (MenuTipoProductoController) cambiarEscena("MenuTipoProductoView.fxml", 800, 450);
             menuTipoProductoView.setEscenarioPrincipal(this);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
-    public void menuComprasView(){
-        try{
-            MenuComprasController menuComprasView = (MenuComprasController)cambiarEscena("MenuComprasView.fxml",892,501);
+
+    public void menuComprasView() {
+        try {
+            MenuComprasController menuComprasView = (MenuComprasController) cambiarEscena("MenuComprasView.fxml", 892, 501);
             menuComprasView.setEscenarioPrincipal(this);
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
-    public void menuCargoEmpleadoView(){
-        try{
-            MenuCargoEmpleadoController menuCargoEmpleadoView = (MenuCargoEmpleadoController)cambiarEscena("MenuCargoEmpleadoView.fxml",925,522);
+
+    public void menuCargoEmpleadoView() {
+        try {
+            MenuCargoEmpleadoController menuCargoEmpleadoView = (MenuCargoEmpleadoController) cambiarEscena("MenuCargoEmpleadoView.fxml", 925, 522);
             menuCargoEmpleadoView.setEscenarioPrincipal(this);
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
-    public void menuProductosView(){
-        try{
-            MenuProductosController menuProductosView = (MenuProductosController)cambiarEscena("MenuProductosView.fxml",979,552);
+
+    public void menuProductosView() {
+        try {
+            MenuProductosController menuProductosView = (MenuProductosController) cambiarEscena("MenuProductosView.fxml", 979, 552);
             menuProductosView.setEscenarioPrincipal(this);
-        }catch(Exception e){
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void menuDetalleCompraView() {
+        try {
+            MenuDetalleCompraController MenuDetalleCompraView = (MenuDetalleCompraController) cambiarEscena("MenuDetalleCompraView.fxml", 979, 552);
+            MenuDetalleCompraView.setEscenarioPrincipal(this);
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -139,4 +149,3 @@ public class Main extends Application {
     }
 
 }
-

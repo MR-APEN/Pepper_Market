@@ -68,10 +68,10 @@ create table Productos(
     precioMayor decimal(10,2),
 	existencia int,
     codigoTipoProducto int,
-    proveedores int,
+    codigoProveedor int,
     primary key PK_codigoProducto(codigoProducto),
     constraint FK_Productos_TipoProducto foreign key (codigoTipoProducto)  references TipoProducto(codigoTipoProducto),
-    constraint FK_Productos_Proveedores foreign key (proveedores) references Proveedores(codigoProveedor)    
+    constraint FK_Productos_Proveedores foreign key (codigoProveedor) references Proveedores(codigoProveedor)    
 );
 
 create table DetalleCompra(
@@ -443,10 +443,10 @@ Delimiter ;
 -- ------------------------------------ AGREGAR--------------------------------------
 Delimiter $$
 	create procedure sp_AgregarProductos(in codigoProducto varchar(15), descripcionProducto varchar(45), precioUnitario decimal(10,2), precioDocena decimal(10,2)
-    , precioMayor decimal(10,2), existencia int, codigoTipoProducto int, proveedores int)
+    , precioMayor decimal(10,2), existencia int, codigoTipoProducto int, codigoProveedor int)
     Begin
-		Insert into Productos (codigoProducto,descripcionProducto,precioUnitario,precioDocena,precioMayor,existencia,codigoTipoProducto,proveedores)
-        values (codigoProducto,descripcionProducto,precioUnitario,precioDocena,precioMayor,existencia,codigoTipoProducto,proveedores);
+		Insert into Productos (codigoProducto,descripcionProducto,precioUnitario,precioDocena,precioMayor,existencia,codigoTipoProducto,codigoProveedor)
+        values (codigoProducto,descripcionProducto,precioUnitario,precioDocena,precioMayor,existencia,codigoTipoProducto,codigoProveedor);
 	End $$
 Delimiter ;
 
@@ -462,7 +462,7 @@ Delimiter $$
         P.precioMayor,
         P.existencia,
         P.codigoTipoProducto,
-        P.proveedores
+        P.codigoProveedor
         From Productos P;
 	End $$
 Delimiter ;
@@ -478,7 +478,7 @@ Delimiter $$
         P.precioMayor,
         P.existencia,
         P.codigoTipoProducto,
-        P.proveedores
+        P.codigoProveedor
         From Productos P
         Where codigoProducto = _codigoProducto;
 	End $$
@@ -506,7 +506,7 @@ Delimiter $$
         precioMayor = _precioMayor,
         existencia = _existencia,
         codigoTipoProducto = _codigoTipoProducto,
-        proveedores = _codigoProveedor
+        codigoProveedor = _codigoProveedor
         Where codigoProducto = _codigoProducto;
 	End $$
 Delimiter ;
@@ -936,15 +936,6 @@ Delimiter $$
     End $$
 Delimiter ;
 
-Delimiter $$
-	create procedure sp_AsignarPrecioUnitario(codigoDetalleFactura int,precioUnitario decimal(10,2))
-    Begin
-		update DetalleFactura DF
-        set
-			DF.precioUnitario = precioUnitario
-		where DF.codigoDetalleFactura = codigoDetalleFactura;
-    End $$
-Delimiter ;
 
 Delimiter $$
 	Create Trigger tr_DetalleComprasTotal_After_Insert
@@ -954,15 +945,6 @@ Delimiter $$
 		call sp_AsignarTotalCompras(new.numeroDocumento);
 	End $$
 Delimiter ;	
-
-Delimiter $$
-	Create Trigger tr_DetalleFacturaPrecio_After_Insert
-    After Insert on DetalleFactura
-    for each row
-    Begin
-		call sp_AsignarPrecioUnitario(NEW.codigoDetalleFactura,NEW.precioUnitario);
-    End $$
-Delimiter ;
 
 call sp_AgregarClientes(01,'180181','Harol','Luna','San Raymundo','28651030','harol@gmail.com');
 call sp_AgregarClientes(02,'117481','Rafael','Samayoa','Amatitlan','0121030','rafa@gmail.com');
