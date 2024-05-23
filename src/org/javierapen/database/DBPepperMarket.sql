@@ -85,7 +85,7 @@ create table DetalleCompra(
     constraint FK_DetalleCompra_Compras foreign key (numeroDocumento) references Compras(numeroDocumento)
 );
 
-create table TelofonoProveedor(
+create table TelefonoProveedor(
 	codigoTelefonoProveedor int,
     numeroPrincipal varchar(8),
     numeroSecundario varchar(8),
@@ -824,6 +824,49 @@ Delimiter $$
     End $$
 Delimiter ;
 
+-- --------------------------------- TELEFONO PROVEEDOR-------------------------------
+Delimiter $$
+	create procedure sp_AgregarTelefonoProveedor(in codigoTelefonoProveedor int,in numeroPrincipal varchar(8), in numeroSecundario varchar(8), in observaciones varchar(45), in codigoProveedor int)
+    Begin
+		Insert Into TelefonoProveedor(codigoTelefonoProveedor,numeroPrincipal,numeroSecundario,observaciones,codigoProveedor)
+        values (codigoTelefonoProveedor,numeroPrincipal,numeroSecundario,observaciones,codigoProveedor);
+    End $$
+Delimiter ;
+
+Delimiter $$
+	create procedure sp_ListarTelefonoProveedor()
+    Begin
+		Select
+			TP.codigoTelefonoProveedor,
+            TP.numeroPrincipal,
+            TP.numeroSecundario,
+            TP.observaciones,
+            TP.codigoProveedor
+		from TelefonoProveedor TP;
+    End $$
+Delimiter ;
+
+Delimiter $$
+	create procedure sp_EditarTelefonoProveedor(in _codigoTelefonoProveedor int,in _numeroPrincipal varchar(8), in _numeroSecundario varchar(8), in _observaciones varchar(45), in _codigoProveedor int)
+    Begin
+		update TelefonoProveedor TP 
+			set 
+			 TP.numeroPrincipal = _numeroPrincipal,
+             TP.numeroSecundario = _numeroSecundario,
+			 TP.observaciones = _observaciones,
+             TP.codigoProveedor = _codigoProveedor
+		    where TP.codigoTelefonoProveedor = _codigoTelefonoProveedor;
+    End $$
+Delimiter ;
+
+Delimiter $$
+	create procedure sp_EliminarTelefonoProveedor(in _codigoTelefonoProveedor int)
+    Begin
+		Delete From TelefonoProveedor
+        where codigoTelefonoProveedor = _codigoTelefonoProveedor;
+    End $$
+Delimiter ;
+
 Delimiter $$
 	create function fn_CalcularPrecioUnitario( codigoProducto varchar(15)) 
     returns decimal(10,2)
@@ -953,7 +996,7 @@ call sp_AgregarCargoEmpleado(01,"Gerente Administrativo","Control del local");
 
 call sp_AgregarTipoProducto(01,"Manzana Verde de EEUU");
 call sp_AgregaProveedores(01,"1233","JUAN","LOPEZ","Zona 12 Villa Nueva","Poder ser el mayor distribuidor","JUAN CARLOS 1111-2222","HTTP/COCACOLA");
-
+call sp_AgregarTelefonoProveedor(01,"11112222","33335555","Todo Bien",01);
 
 call sp_AgregarCompras(01,"2024-02-12","Paquete de manzanas",199.99);
 call sp_AgregarCompras(02,"2024-01-05","Paquete de mangos",149.99);
@@ -976,3 +1019,5 @@ call sp_AgregarDetalleFactura(01,0.00,1,01,"ABC123");
 
 call sp_ListarProductos();
 call sp_ListarCompras();
+call sp_ListarEmpleados();
+call sp_ListarTelefonoProveedor();

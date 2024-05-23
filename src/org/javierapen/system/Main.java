@@ -17,10 +17,12 @@ import org.javierapen.controller.MenuCargoEmpleadoController;
 import org.javierapen.controller.MenuClienteController;
 import org.javierapen.controller.MenuComprasController;
 import org.javierapen.controller.MenuDetalleCompraController;
+import org.javierapen.controller.MenuEmpleadosController;
 import org.javierapen.controller.MenuPrincipalController;
 import org.javierapen.controller.MenuProductosController;
 import org.javierapen.controller.MenuProgramadorController;
 import org.javierapen.controller.MenuProveedorController;
+import org.javierapen.controller.MenuTelefonoProveedorController;
 import org.javierapen.controller.MenuTipoProductoController;
 
 /**
@@ -140,6 +142,24 @@ public class Main extends Application {
             MenuDetalleCompraController MenuDetalleCompraView = (MenuDetalleCompraController) cambiarEscena("MenuDetalleCompraView.fxml", 979, 552);
             MenuDetalleCompraView.setEscenarioPrincipal(this);
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void menuEmpleadosView() {
+        try {
+            MenuEmpleadosController MenuEmpleadosView = (MenuEmpleadosController) cambiarEscena("MenuEmpleadosView.fxml", 979, 552);
+            MenuEmpleadosView.setEscenarioPrincipal(this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void MenuTelefonoProveedorView() {
+        try{
+            MenuTelefonoProveedorController MenuTelefonoProveedorView = (MenuTelefonoProveedorController) cambiarEscena("MenuTelefonoProveedorView.fxml",979,552);
+            MenuTelefonoProveedorView.setEscenarioPrincipal(this);
+        }catch(Exception e){
             e.printStackTrace();
         }
     }

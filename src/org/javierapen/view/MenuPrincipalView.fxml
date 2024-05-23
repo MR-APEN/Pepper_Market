@@ -21,11 +21,12 @@
               <MenuItem fx:id="btnMenuProductos" mnemonicParsing="false" onAction="#clicProductos" text="Productos" />
                   <MenuItem fx:id="btnMenuProveedor" mnemonicParsing="false" onAction="#clicProveedor" text="Proveedores" />
                   <MenuItem fx:id="btnMenuClientes" mnemonicParsing="false" onAction="#clicClientes" text="Clientes" />
-                  <MenuItem mnemonicParsing="false" text="Empleados" />
+                  <MenuItem fx:id="btnMenuEmpleados" mnemonicParsing="false" onAction="#clicEmpleados" text="Empleados" />
                   <MenuItem fx:id="btnMenuTipoProducto" mnemonicParsing="false" onAction="#clicTipoProducto" text="Tipo Producto" />
                   <MenuItem fx:id="btnMenuCompras" mnemonicParsing="false" onAction="#clicCompras" text="Compras" />
                   <MenuItem fx:id="btnMenuCargoEmpleado" mnemonicParsing="false" onAction="#clicCargoEmpleado" text="Cargo Empleado" />
                   <MenuItem fx:id="btnMenuDetalleCompra" mnemonicParsing="false" onAction="#clicDetalleCompra" text="Detalle Compra" />
+                  <MenuItem fx:id="btnMenuTelefonoProveedor" mnemonicParsing="false" onAction="#clicTelefonoProveedor" text="Telefono Proveedor" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Reportes">
@@ -43,7 +44,7 @@
           </Menu>
         </menus>
       </MenuBar>
-      <ImageView fitHeight="80.0" fitWidth="149.0" layoutX="214.0" layoutY="252.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="80.0" fitWidth="149.0" layoutX="144.0" layoutY="256.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../image/Logo.png" />
          </image>

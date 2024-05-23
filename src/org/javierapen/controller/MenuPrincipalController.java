@@ -35,6 +35,10 @@ public class MenuPrincipalController implements Initializable {
     private MenuItem btnMenuProductos;
     @FXML
     private MenuItem btnMenuDetalleCompra;
+    @FXML
+    private MenuItem btnMenuEmpleados;
+    @FXML
+    private MenuItem btnMenuTelefonoProveedor;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -104,4 +108,19 @@ public class MenuPrincipalController implements Initializable {
             escenarioPrincipal.menuDetalleCompraView();
         }
     }
+
+    @FXML
+    public void clicEmpleados(ActionEvent event) {
+        if (event.getSource() == btnMenuEmpleados) {
+            escenarioPrincipal.menuEmpleadosView();
+        }
+    }
+
+    @FXML
+    public void clicTelefonoProveedor(ActionEvent event) {
+        if (event.getSource() == btnMenuTelefonoProveedor) {
+            escenarioPrincipal.MenuTelefonoProveedorView();
+        }
+    }
+
 }
