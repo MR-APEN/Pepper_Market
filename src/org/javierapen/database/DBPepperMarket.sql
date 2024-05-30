@@ -161,6 +161,7 @@ Delimiter $$
 	create procedure sp_BuscarClientes(in  _codigoCliente int)
     Begin
 		select 
+        C.codigoCliente,
         C.nitCliente,
         C.nombreCliente,
         C.apellidoCliente,

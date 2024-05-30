@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="516.0" prefWidth="912.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.javierapen.controller.MenuFacturaController">
    <children>
       <ImageView fitHeight="529.0" fitWidth="912.0" pickOnBounds="true" preserveRatio="true">
@@ -30,7 +29,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnAgregar" layoutX="87.0" layoutY="233.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="135.0" styleClass="button3" stylesheets="@../resource/PepperMarketCSS.css" text="Agregar">
+      <Button fx:id="btnAgregar" layoutX="87.0" layoutY="233.0" mnemonicParsing="false" onAction="#agregar" prefHeight="50.0" prefWidth="135.0" styleClass="button3" stylesheets="@../resource/PepperMarketCSS.css" text="Agregar">
          <graphic>
             <ImageView fx:id="imgAgregar" fitHeight="42.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -39,7 +38,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnEliminar" layoutX="87.0" layoutY="305.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="135.0" styleClass="button3" stylesheets="@../resource/PepperMarketCSS.css" text="Eliminar">
+      <Button fx:id="btnEliminar" layoutX="87.0" layoutY="305.0" mnemonicParsing="false" onAction="#eliminar" prefHeight="49.0" prefWidth="135.0" styleClass="button3" stylesheets="@../resource/PepperMarketCSS.css" text="Eliminar">
          <graphic>
             <ImageView fx:id="imgEliminar" fitHeight="41.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -48,7 +47,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnEditar" layoutX="87.0" layoutY="371.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="135.0" styleClass="button3" stylesheets="@../resource/PepperMarketCSS.css" text="Editar">
+      <Button fx:id="btnEditar" layoutX="87.0" layoutY="371.0" mnemonicParsing="false" onAction="#editar" prefHeight="49.0" prefWidth="135.0" styleClass="button3" stylesheets="@../resource/PepperMarketCSS.css" text="Editar">
          <graphic>
             <ImageView fx:id="imgEditar" fitHeight="43.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -57,7 +56,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnReporte" layoutX="87.0" layoutY="440.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="135.0" styleClass="button3" stylesheets="@../resource/PepperMarketCSS.css" text="Reporte">
+      <Button fx:id="btnReporte" layoutX="87.0" layoutY="440.0" mnemonicParsing="false" onAction="#reporte" prefHeight="49.0" prefWidth="135.0" styleClass="button3" stylesheets="@../resource/PepperMarketCSS.css" text="Reporte">
          <graphic>
             <ImageView fx:id="imgReporte" fitHeight="41.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -66,7 +65,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <TableView fx:id="tblFactura" layoutX="288.0" layoutY="254.0" prefHeight="246.0" prefWidth="579.0">
+      <TableView fx:id="tblFactura" layoutX="288.0" layoutY="254.0" onMouseClicked="#seleccionarElemento" prefHeight="246.0" prefWidth="579.0">
         <columns>
           <TableColumn fx:id="colNumeroF" prefWidth="48.79998779296875" text="No. Factura" />
           <TableColumn fx:id="colEstadoF" prefWidth="89.60003662109375" text="Estado" />

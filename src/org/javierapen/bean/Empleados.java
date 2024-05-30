@@ -10,6 +10,7 @@ package org.javierapen.bean;
  * @author 50258
  */
 public class Empleados {
+
     private int codigoEmpleado;
     private String nombreEmpleado;
     private String apellidoEmpleado;
@@ -86,6 +87,9 @@ public class Empleados {
     public void setCodigoCargoEmpleado(int codigoCargoEmpleado) {
         this.codigoCargoEmpleado = codigoCargoEmpleado;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return getCodigoEmpleado() + " | " + getNombreEmpleado();
+    }
 }

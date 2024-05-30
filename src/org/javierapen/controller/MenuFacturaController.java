@@ -21,7 +21,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javax.swing.JOptionPane;
 import org.javierapen.bean.Clientes;
 import org.javierapen.bean.Empleados;
 import org.javierapen.bean.Facturas;
@@ -94,7 +96,7 @@ public class MenuFacturaController implements Initializable {
         cargarDatos();
         cmbCliente.setItems(getClientes());
         cmbEmpleado.setItems(getEmpleados());
-        
+
     }
 
     public void cargarDatos() {
@@ -114,6 +116,113 @@ public class MenuFacturaController implements Initializable {
         txtFechaF.setText(((Facturas) tblFactura.getSelectionModel().getSelectedItem()).getFechaFactura());
         cmbCliente.getSelectionModel().select(buscarCliente(((Facturas) tblFactura.getSelectionModel().getSelectedItem()).getCodigoCliente()));
         cmbEmpleado.getSelectionModel().select(buscarEmpleado(((Facturas) tblFactura.getSelectionModel().getSelectedItem()).getCodigoEmpleado()));
+    }
+
+    public void agregar() {
+        switch (tipoDeOperaciones) {
+            case NINGUNO:
+                activarControles();
+                limpiarControles();
+                btnAgregar.setText("Guardar");
+                btnEliminar.setText("Cancelar");
+                btnEditar.setDisable(true);
+                btnReporte.setDisable(true);
+                tipoDeOperaciones = operaciones.ACTUALIZAR;
+                break;
+            case ACTUALIZAR:
+                guardar();
+                desactivarControles();
+                limpiarControles();
+                btnAgregar.setText("Agregar");
+                btnEliminar.setText("Eliminar");
+                btnEditar.setDisable(false);
+                btnReporte.setDisable(false);
+                tipoDeOperaciones = operaciones.NINGUNO;
+                cargarDatos();
+                break;
+        }
+
+    }
+
+    public void editar() {
+        switch (tipoDeOperaciones) {
+            case NINGUNO:
+                if (tblFactura.getSelectionModel().getSelectedItem() != null) {
+                    btnEditar.setText("Actualizar");
+                    btnReporte.setText("Cancelar");
+                    btnAgregar.setDisable(true);
+                    btnEliminar.setDisable(true);
+                    imgReporte.setImage(new Image("/org/javierapen/image/cancelar.png"));
+                    activarControles();
+                    txtNumeroF.setEditable(false);
+                    tipoDeOperaciones = operaciones.ACTUALIZAR;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Debe seleccionar algun elemento");
+                }
+                break;
+            case ACTUALIZAR:
+                actualizar();
+                desactivarControles();
+                limpiarControles();
+                btnEditar.setText("Editar");
+                btnReporte.setText("Reporte");
+                btnAgregar.setDisable(false);
+                btnEliminar.setDisable(false);
+                imgReporte.setImage(new Image("/org/javierapen/image/reporte.png"));
+                tipoDeOperaciones = operaciones.NINGUNO;
+                cargarDatos();
+                break;
+        }
+    }
+
+    @FXML
+    public void eliminar() {
+        switch (tipoDeOperaciones) {
+            case ACTUALIZAR:
+                desactivarControles();
+                limpiarControles();
+                btnAgregar.setText("Agregar");
+                btnEliminar.setText("Eliminar");
+                btnEditar.setDisable(false);
+                btnReporte.setDisable(false);
+                imgAgregar.setImage(new Image("/org/javierapen/image/agregar-usuario.png"));
+                imgEliminar.setImage(new Image("/org/javierapen/image/eliminar-amigo.png"));
+                tipoDeOperaciones = operaciones.NINGUNO;
+                break;
+            default:
+                if (tblFactura.getSelectionModel().getSelectedItem() != null) {
+                    int respuesta = JOptionPane.showConfirmDialog(null, "Confirmar si elimina registro",
+                            "Eliminar Factura", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                    if (respuesta == JOptionPane.YES_NO_OPTION) {
+                        try {
+                            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_EliminarFactura(?)}");
+                            procedimiento.setInt(1, ((Facturas) tblFactura.getSelectionModel().getSelectedItem()).getNumeroFactura());
+                            procedimiento.execute();
+                            listaFacturas.remove(tblFactura.getSelectionModel().getSelectedItem());
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Debe Seleccionar un Elemento");
+                }
+        }
+    }
+
+    public void reporte() {
+        switch (tipoDeOperaciones) {
+            case ACTUALIZAR:
+                desactivarControles();
+                limpiarControles();
+                btnEditar.setText("Editar");
+                btnReporte.setText("Reporte");
+                btnAgregar.setDisable(false);
+                btnEliminar.setDisable(false);
+                imgEditar.setImage(new Image("/org/javierapen/image/editar.png"));
+                imgReporte.setImage(new Image("/org/javierapen/image/reporte.png"));
+                tipoDeOperaciones = operaciones.NINGUNO;
+                break;
+        }
     }
 
     public Empleados buscarEmpleado(int codigoEmpleado) {
@@ -222,6 +331,51 @@ public class MenuFacturaController implements Initializable {
             e.printStackTrace();
         }
         return listaEmpleados = FXCollections.observableArrayList(lista);
+    }
+
+    public void guardar() {
+        Facturas registro = new Facturas();
+        registro.setNumeroFactura(Integer.parseInt(txtNumeroF.getText()));
+        registro.setEstado(txtEstadoF.getText());
+        registro.setTotalFactura(Double.parseDouble(txtTotalFacturaF.getText()));
+        registro.setFechaFactura(txtFechaF.getText());
+        registro.setCodigoCliente(((Clientes) cmbCliente.getSelectionModel().getSelectedItem()).getCodigoCliente());
+        registro.setCodigoEmpleado(((Empleados) cmbEmpleado.getSelectionModel().getSelectedItem()).getCodigoEmpleado());
+        try {
+            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_AgregarFactura(?,?,?,?,?,?)}");
+            procedimiento.setInt(1, registro.getNumeroFactura());
+            procedimiento.setString(2, registro.getEstado());
+            procedimiento.setDouble(3, registro.getTotalFactura());
+            procedimiento.setString(4, registro.getFechaFactura());
+            procedimiento.setInt(5, registro.getCodigoCliente());
+            procedimiento.setInt(6, registro.getCodigoEmpleado());
+            procedimiento.execute();
+            listaFacturas.add(registro);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void actualizar() {
+        try {
+            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_EditarFactura(?,?,?,?,?,?)}");
+            Facturas registro = (Facturas) tblFactura.getSelectionModel().getSelectedItem();
+            registro.setNumeroFactura(Integer.parseInt(txtNumeroF.getText()));
+            registro.setEstado(txtEstadoF.getText());
+            registro.setTotalFactura(Double.parseDouble(txtTotalFacturaF.getText()));
+            registro.setFechaFactura(txtFechaF.getText());
+            registro.setCodigoCliente(((Clientes) cmbCliente.getSelectionModel().getSelectedItem()).getCodigoCliente());
+            registro.setCodigoEmpleado(((Empleados) cmbEmpleado.getSelectionModel().getSelectedItem()).getCodigoEmpleado());
+            procedimiento.setInt(1, registro.getNumeroFactura());
+            procedimiento.setString(2, registro.getEstado());
+            procedimiento.setDouble(3, registro.getTotalFactura());
+            procedimiento.setString(4, registro.getFechaFactura());
+            procedimiento.setInt(5, registro.getCodigoCliente());
+            procedimiento.setInt(6, registro.getCodigoEmpleado());
+            procedimiento.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void desactivarControles() {
