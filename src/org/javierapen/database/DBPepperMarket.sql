@@ -298,9 +298,10 @@ Delimiter $$
 	create procedure sp_BuscarTipoProducto(in _codigoTipoProducto int)
     Begin
 		Select
+        TP.codigoTipoProducto,
         TP.descripcion
         From tipoproducto TP
-        Where codigoTipoProducto = codigoTipoProducto;
+        Where codigoTipoProducto = _codigoTipoProducto;
 	End $$
 Delimiter ;
 
@@ -308,8 +309,8 @@ Delimiter ;
 Delimiter $$
 	create procedure sp_EliminarTipoProducto(in codigoTipoProducto int)
     Begin
-		Delete from tipoproducto
-        Where codigoTipoProducto = codigoTipoProducto;
+		Delete from tipoproducto TP
+        Where TP.codigoTipoProducto = codigoTipoProducto;
 	End $$
 Delimiter ;
 
@@ -350,14 +351,15 @@ Delimiter ;
 
 -- ----------------------------------- BUSCAR -----------------------------------------
 Delimiter $$
-	create procedure sp_BuscarCompras(in numeroDocumento int)
+	create procedure sp_BuscarCompras(in _numeroDocumento int)
     Begin
 		Select
+        C.numeroDocumento,
         C.fechaDocumento,
         C.descripcion,
         C.totalDocumento
         From Compras C
-        Where numeroDocumento = numeroDocumento;
+        Where numeroDocumento = _numeroDocumento;
 	End $$
 Delimiter ;
 
@@ -410,6 +412,7 @@ Delimiter $$
 	create procedure sp_BuscarCargoEmpleado(in _codigoCargoEmpleado int)
     Begin
 		Select
+		CE.codigoCargoEmpleado,
         CE.nombreCargo,
         CE.descripcionCargo
         From CargoEmpleado CE
@@ -469,9 +472,10 @@ Delimiter ;
 
 -- ----------------------------------- BUSCAR -----------------------------------------
 Delimiter $$
-	create procedure sp_BuscarProductos(in _codigoProducto varchar(45))
+	create procedure sp_BuscarProductos(in _codigoProducto varchar(15))
     Begin
 		Select 
+        P.codigoProducto,
         P.descripcionProducto,
         P.precioUnitario,
         P.precioDocena,
@@ -486,7 +490,7 @@ Delimiter ;
 
 -- ---------------------------------- ELIMINAR ---------------------------------------
 Delimiter $$
-	create procedure sp_EliminarProductos(in _codigoProducto varchar(45))
+	create procedure sp_EliminarProductos(in _codigoProducto varchar(15))
     Begin
 		Delete from Productos
         Where codigoProducto = _codigoProducto;
@@ -495,7 +499,7 @@ Delimiter ;
 
 -- --------------------------------- EDITAR ------------------------------------------
 Delimiter $$
-	create procedure sp_EditarProductos(in _codigoProducto varchar(45), _descripcionProducto varchar(45), _precioUnitario decimal(10,2), _precioDocena decimal(10,2),
+	create procedure sp_EditarProductos(in _codigoProducto varchar(15), _descripcionProducto varchar(45), _precioUnitario decimal(10,2), _precioDocena decimal(10,2),
     _precioMayor decimal(10,2), _existencia int, _codigoTipoProducto int , _codigoProveedor int)
     Begin
 		Update Productos

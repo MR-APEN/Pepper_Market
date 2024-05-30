@@ -210,8 +210,8 @@ public class MenuFacturaController implements Initializable {
             ResultSet resultado = procedimiento.executeQuery();
             while (resultado.next()) {
                 lista.add(new Empleados(resultado.getInt("codigoEmpleado"),
-                        resultado.getString("nombresEmpleado"),
-                        resultado.getString("apellidosEmpleado"),
+                        resultado.getString("nombreEmpleado"),
+                        resultado.getString("apellidoEmpleado"),
                         resultado.getDouble("sueldo"),
                         resultado.getString("direccion"),
                         resultado.getString("turno"),

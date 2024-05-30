@@ -287,6 +287,7 @@ public class MenuEmpleadosController implements Initializable {
         }
     }
 
+    @FXML
     public void eliminar() {
         switch (tipoDeOperaciones) {
             case ACTUALIZAR:
@@ -296,10 +297,27 @@ public class MenuEmpleadosController implements Initializable {
                 btnEliminar.setText("Eliminar");
                 btnEditar.setDisable(false);
                 btnReporte.setDisable(false);
-                imgAgregar.setImage(new Image("org/javierapen/image/agregar-usuario.png"));
-                imgEliminar.setImage(new Image("org/javierapen/image/eliminar-amigo.png"));
+                imgAgregar.setImage(new Image("/org/javierapen/image/agregar-usuario.png"));
+                imgEliminar.setImage(new Image("/org/javierapen/image/eliminar-amigo.png"));
                 tipoDeOperaciones = operaciones.NINGUNO;
                 break;
+            default:
+                if (tblEmpleados.getSelectionModel().getSelectedItem() != null) {
+                    int respuesta = JOptionPane.showConfirmDialog(null, "Confirmar si elimina registro",
+                            "Eliminar Empleado", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                    if (respuesta == JOptionPane.YES_NO_OPTION) {
+                        try {
+                            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_EliminarEmpleados(?)}");
+                            procedimiento.setInt(1, ((Empleados) tblEmpleados.getSelectionModel().getSelectedItem()).getCodigoEmpleado());
+                            procedimiento.execute();
+                            listaEmpleados.remove(tblEmpleados.getSelectionModel().getSelectedItem());
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Debe Seleccionar un Elemento");
+                }
         }
     }
 

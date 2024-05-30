@@ -67,7 +67,7 @@ public class Main extends Application {
 
     public void menuPrincipalView() {
         try {
-            MenuPrincipalController menuPrincipalView = (MenuPrincipalController) cambiarEscena("MenuPrincipalView.fxml", 591, 394);
+            MenuPrincipalController menuPrincipalView = (MenuPrincipalController) cambiarEscena("MenuPrincipalView.fxml", 566, 570);
             menuPrincipalView.setEscenarioPrincipal(this);
         } catch (Exception e) {
             e.printStackTrace();

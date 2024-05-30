@@ -7,27 +7,51 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="512.0" prefWidth="784.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.javierapen.controller.MenuPrincipalController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="570.0" prefWidth="566.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.javierapen.controller.MenuPrincipalController">
    <children>
-      <ImageView fitHeight="512.0" fitWidth="784.0" layoutX="8.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="577.0" fitWidth="572.0" layoutX="-2.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../image/fondo.png" />
+            <Image url="@../image/Pepper_Market_Fondo.jpeg" />
          </image>
       </ImageView>
-      <MenuBar fx:id="btnMenuBar" layoutX="14.0" layoutY="14.0" prefHeight="21.0" prefWidth="209.0">
+      <MenuBar fx:id="btnMenuBar" layoutX="14.0" layoutY="14.0" prefHeight="30.0" prefWidth="272.0">
         <menus>
           <Menu mnemonicParsing="false" text="Modulo">
             <items>
-              <MenuItem fx:id="btnMenuProductos" mnemonicParsing="false" onAction="#clicProductos" text="Productos" />
-                  <MenuItem fx:id="btnMenuProveedor" mnemonicParsing="false" onAction="#clicProveedor" text="Proveedores" />
-                  <MenuItem fx:id="btnMenuClientes" mnemonicParsing="false" onAction="#clicClientes" text="Clientes" />
-                  <MenuItem fx:id="btnMenuEmpleados" mnemonicParsing="false" onAction="#clicEmpleados" text="Empleados" />
-                  <MenuItem fx:id="btnMenuTipoProducto" mnemonicParsing="false" onAction="#clicTipoProducto" text="Tipo Producto" />
-                  <MenuItem fx:id="btnMenuCompras" mnemonicParsing="false" onAction="#clicCompras" text="Compras" />
-                  <MenuItem fx:id="btnMenuCargoEmpleado" mnemonicParsing="false" onAction="#clicCargoEmpleado" text="Cargo Empleado" />
-                  <MenuItem fx:id="btnMenuDetalleCompra" mnemonicParsing="false" onAction="#clicDetalleCompra" text="Detalle Compra" />
-                  <MenuItem fx:id="btnMenuTelefonoProveedor" mnemonicParsing="false" onAction="#clicTelefonoProveedor" text="Telefono Proveedor" />
-                  <MenuItem fx:id="btnMenuFactura" mnemonicParsing="false" onAction="#clicFactura" text="Factura" />
+                  <Menu mnemonicParsing="false" text="Menu Proveedores">
+                    <items>
+                        <MenuItem fx:id="btnMenuProveedor" mnemonicParsing="false" onAction="#clicProveedor" text="Proveedores" />
+                        <MenuItem fx:id="btnMenuTelefonoProveedor" mnemonicParsing="false" onAction="#clicTelefonoProveedor" text="Telefono Proveedor" />
+                    </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Menu Productos">
+                    <items>
+                    <MenuItem fx:id="btnMenuProductos" mnemonicParsing="false" onAction="#clicProductos" text="Productos" />
+                        <MenuItem fx:id="btnMenuTipoProducto" mnemonicParsing="false" onAction="#clicTipoProducto" text="Tipo Producto" />
+                    </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Menu Compras">
+                    <items>
+                        <MenuItem fx:id="btnMenuCompras" mnemonicParsing="false" onAction="#clicCompras" text="Compras" />
+                        <MenuItem fx:id="btnMenuDetalleCompra" mnemonicParsing="false" onAction="#clicDetalleCompra" text="Detalle Compra" />
+                    </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Menu Empleados">
+                     <items>
+                        <MenuItem fx:id="btnMenuEmpleados" mnemonicParsing="false" onAction="#clicEmpleados" text="Empleados" />
+                        <MenuItem fx:id="btnMenuCargoEmpleado" mnemonicParsing="false" onAction="#clicCargoEmpleado" text="Cargo Empleado" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Menu Clientes">
+                    <items>
+                        <MenuItem fx:id="btnMenuClientes" mnemonicParsing="false" onAction="#clicClientes" text="Clientes" />
+                    </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Menu Facturas">
+                    <items>
+                        <MenuItem fx:id="btnMenuFactura" mnemonicParsing="false" onAction="#clicFactura" text="Factura" />
+                    </items>
+                  </Menu>
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Reportes">
@@ -45,7 +69,7 @@
           </Menu>
         </menus>
       </MenuBar>
-      <ImageView fitHeight="80.0" fitWidth="149.0" layoutX="144.0" layoutY="256.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="51.0" fitWidth="121.0" layoutX="459.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../image/Logo.png" />
          </image>
