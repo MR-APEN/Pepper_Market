@@ -10,12 +10,13 @@ package org.javierapen.bean;
  * @author 50258
  */
 public class Facturas {
-       private int numeroFactura;
-   private String estado;
-   private double totalFactura;
-   private String fechaFactura;
-   private int codigoCliente;
-   private int codigoEmpleado;
+
+    private int numeroFactura;
+    private String estado;
+    private double totalFactura;
+    private String fechaFactura;
+    private int codigoCliente;
+    private int codigoEmpleado;
 
     public Facturas() {
     }
@@ -76,5 +77,9 @@ public class Facturas {
     public void setCodigoEmpleado(int codigoEmpleado) {
         this.codigoEmpleado = codigoEmpleado;
     }
-   
+
+    @Override
+    public String toString() {
+        return getNumeroFactura() + " | " + getEstado();
+    }
 }

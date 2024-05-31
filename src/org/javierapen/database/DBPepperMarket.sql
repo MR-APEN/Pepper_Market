@@ -607,6 +607,7 @@ Delimiter $$
 	create procedure sp_BuscarFactura(in numeroFactura int)
     Begin
 		Select
+        F.numeroFactura,
 		F.estado,
 		F.totalFactura,
 		F.fechaFactura,
@@ -669,6 +670,7 @@ Delimiter $$
 	create procedure sp_BuscarEmailProveedor(in codigoEmailProveedor int)
 	Begin
 		Select
+        EP.codigoEmailProveedor,
         EP.emailProveedor,
         EP.descripcion,
         EP.codigoProveedor
@@ -679,10 +681,10 @@ Delimiter ;
 
 -- ---------------------------------- ELIMINAR ---------------------------------------
 Delimiter $$
-	create procedure sp_EliminarEmailProveedor(in codigoEmailProveedor int)
+	create procedure sp_EliminarEmailProveedor(in _codigoEmailProveedor int)
     Begin
 		Delete from EmailProveedor
-        Where codigoEmailProveedor = codigoEmailProveedor;
+        Where codigoEmailProveedor = _codigoEmailProveedor;
 	End $$
 Delimiter ;
 
@@ -821,7 +823,7 @@ Delimiter $$
     Begin
 		Update DetalleFactura DF
         Set
-			DF.preciocUnitario = _precioUnitario,
+			DF.precioUnitario = _precioUnitario,
             DF.cantidad = _cantidad,
             DF.numeroFactura = _numeroFactura,
             DF.codigoProducto = _codigoProducto
@@ -1020,6 +1022,7 @@ call sp_AgregarEmpleados(01,"Javier","Apen",350.25,"Ciudad Quetzal","Vespetina",
 call sp_AgregarFactura(01,"Vigente",46.00,"2024-05-10",02,01);
 
 call sp_AgregarDetalleFactura(01,0.00,1,01,"ABC123");
+call sp_AgregarEmailProveedor(01,"juan@gmail.com","Proveedor Coca Cola Juan",01);
 
 
 call sp_ListarProductos();

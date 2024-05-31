@@ -17,6 +17,8 @@ import org.javierapen.controller.MenuCargoEmpleadoController;
 import org.javierapen.controller.MenuClienteController;
 import org.javierapen.controller.MenuComprasController;
 import org.javierapen.controller.MenuDetalleCompraController;
+import org.javierapen.controller.MenuDetalleFacturaController;
+import org.javierapen.controller.MenuEmailProveedorController;
 import org.javierapen.controller.MenuEmpleadosController;
 import org.javierapen.controller.MenuFacturaController;
 import org.javierapen.controller.MenuPrincipalController;
@@ -170,6 +172,24 @@ public class Main extends Application {
             MenuFacturaController MenuFacturaView = (MenuFacturaController) cambiarEscena("MenuFacturaView.fxml", 912, 516);
             MenuFacturaView.setEscenarioPrincipal(this);
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void MenuDetalleFacturaView(){
+        try{
+            MenuDetalleFacturaController MenuDetalleFacturaView = (MenuDetalleFacturaController) cambiarEscena("MenuDetalleFacturaView.fxml",942,532);
+            MenuDetalleFacturaView.setEscenarioPrincipal(this);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    public void MenuEmailProveedorView(){
+        try{
+            MenuEmailProveedorController MenuEmailProveedorView = (MenuEmailProveedorController) cambiarEscena("MenuEmailProveedorView.fxml",945,533);
+            MenuEmailProveedorView.setEscenarioPrincipal(this);
+        }catch (Exception e){
             e.printStackTrace();
         }
     }

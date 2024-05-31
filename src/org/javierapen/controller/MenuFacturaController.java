@@ -403,7 +403,6 @@ public class MenuFacturaController implements Initializable {
         txtFechaF.clear();
         cmbCliente.getSelectionModel().getSelectedItem();
         cmbEmpleado.getSelectionModel().getSelectedItem();
-
     }
 
     public Main getEscenarioPrincipal() {
