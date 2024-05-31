@@ -6,6 +6,7 @@
 package org.javierapen.controller;
 
 import java.net.URL;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -32,6 +34,9 @@ import org.javierapen.system.Main;
  * @author 50258
  */
 public class MenuComprasController implements Initializable {
+
+    @FXML
+    private DatePicker datepFechaC;
 
     private enum operaciones {
         AGREGAR, ELIMINAR, EDITAR, ACTUALIZAR, CANCELAR, NINGUNO
@@ -73,8 +78,6 @@ public class MenuComprasController implements Initializable {
     @FXML
     private TextField txtNumeroC;
     @FXML
-    private TextField txtFechaC;
-    @FXML
     private TextField txtTotalC;
 
     @Override
@@ -86,14 +89,15 @@ public class MenuComprasController implements Initializable {
     public void cargarDatos() {
         tblCompras.setItems(getCompras());
         colNumeroC.setCellValueFactory(new PropertyValueFactory<Compras, Integer>("numeroDocumento"));
-        colFechaC.setCellValueFactory(new PropertyValueFactory<Compras, String>("fechaDocumento"));
+        colFechaC.setCellValueFactory(new PropertyValueFactory<Compras, DatePicker>("fechaDocumento"));
         colDescripcionC.setCellValueFactory(new PropertyValueFactory<Compras, String>("descripcion"));
         colTotalC.setCellValueFactory(new PropertyValueFactory<Compras, Double>("totalDocumento"));
     }
 
+    @FXML
     public void selecionarDatos() {
         txtNumeroC.setText(String.valueOf(((Compras) tblCompras.getSelectionModel().getSelectedItem()).getNumeroDocumento()));
-        txtFechaC.setText(String.valueOf(((Compras) tblCompras.getSelectionModel().getSelectedItem()).getFechaDocumento()));
+        datepFechaC.setValue(((Compras) tblCompras.getSelectionModel().getSelectedItem()).getFechaDocumento().toLocalDate());
         txtDescripcionC.setText(String.valueOf(((Compras) tblCompras.getSelectionModel().getSelectedItem()).getDescripcion()));
         txtTotalC.setText(String.valueOf(((Compras) tblCompras.getSelectionModel().getSelectedItem()).getTotalDocumento()));
     }
@@ -105,7 +109,7 @@ public class MenuComprasController implements Initializable {
             ResultSet resultado = procedimiento.executeQuery();
             while (resultado.next()) {
                 lista.add(new Compras(resultado.getInt("numeroDocumento"),
-                        resultado.getString("fechaDocumento"),
+                        resultado.getDate("fechaDocumento"),
                         resultado.getString("descripcion"),
                         resultado.getDouble("totalDocumento")
                 ));
@@ -116,6 +120,7 @@ public class MenuComprasController implements Initializable {
         return listaCompras = FXCollections.observableArrayList(lista);
     }
 
+    @FXML
     public void agregar() {
         switch (tipoDeOperaciones) {
             case NINGUNO:
@@ -145,6 +150,7 @@ public class MenuComprasController implements Initializable {
         }
     }
 
+    @FXML
     public void eliminar() {
         switch (tipoDeOperaciones) {
             case ACTUALIZAR:
@@ -178,6 +184,7 @@ public class MenuComprasController implements Initializable {
         }
     }
 
+    @FXML
     public void editar() {
         switch (tipoDeOperaciones) {
             case NINGUNO:
@@ -209,6 +216,7 @@ public class MenuComprasController implements Initializable {
         }
     }
 
+    @FXML
     public void reporte() {
         switch (tipoDeOperaciones) {
             case ACTUALIZAR:
@@ -228,13 +236,13 @@ public class MenuComprasController implements Initializable {
     public void guardar() {
         Compras registro = new Compras();
         registro.setNumeroDocumento(Integer.parseInt(txtNumeroC.getText()));
-        registro.setFechaDocumento(txtFechaC.getText());
+        registro.setFechaDocumento(Date.valueOf(datepFechaC.getValue()));
         registro.setDescripcion(txtDescripcionC.getText());
         registro.setTotalDocumento(Double.parseDouble(txtTotalC.getText()));
         try {
             PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_AgregarCompras(?,?,?,?)}");
             procedimiento.setInt(1, registro.getNumeroDocumento());
-            procedimiento.setString(2, registro.getFechaDocumento());
+            procedimiento.setDate(2, registro.getFechaDocumento());
             procedimiento.setString(3, registro.getDescripcion());
             procedimiento.setDouble(4, registro.getTotalDocumento());
             procedimiento.execute();
@@ -248,11 +256,11 @@ public class MenuComprasController implements Initializable {
         try {
             PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_EditarCompras(?,?,?,?)}");
             Compras registro = (Compras) tblCompras.getSelectionModel().getSelectedItem();
-            registro.setFechaDocumento(txtFechaC.getText());
+            registro.setFechaDocumento(Date.valueOf(datepFechaC.getValue()));
             registro.setDescripcion(txtDescripcionC.getText());
             registro.setTotalDocumento(Double.parseDouble(txtTotalC.getText()));
             procedimiento.setInt(1, registro.getNumeroDocumento());
-            procedimiento.setString(2, registro.getFechaDocumento());
+            procedimiento.setDate(2, registro.getFechaDocumento());
             procedimiento.setString(3, registro.getDescripcion());
             procedimiento.setDouble(4, registro.getTotalDocumento());
             procedimiento.execute();
@@ -263,21 +271,18 @@ public class MenuComprasController implements Initializable {
 
     public void desactivarControllers() {
         txtNumeroC.setEditable(false);
-        txtFechaC.setEditable(false);
         txtDescripcionC.setEditable(false);
         txtTotalC.setEditable(false);
     }
 
     public void activarControllers() {
         txtNumeroC.setEditable(true);
-        txtFechaC.setEditable(true);
         txtDescripcionC.setEditable(true);
         txtTotalC.setEditable(true);
     }
 
     public void limpiarControllers() {
         txtNumeroC.clear();
-        txtFechaC.clear();
         txtDescripcionC.clear();
         txtTotalC.clear();
     }

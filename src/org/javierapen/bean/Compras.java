@@ -5,20 +5,22 @@
  */
 package org.javierapen.bean;
 
+import java.sql.Date;
+
 /**
  *
  * @author 50258
  */
 public class Compras {
     private int numeroDocumento;
-    private String fechaDocumento;
+    private Date fechaDocumento;
     private String descripcion;
     private double totalDocumento;
 
     public Compras() {
     }
 
-    public Compras(int numeroDocumento, String fechaDocumento, String descripcion, double totalDocumento) {
+    public Compras(int numeroDocumento, Date fechaDocumento, String descripcion, double totalDocumento) {
         this.numeroDocumento = numeroDocumento;
         this.fechaDocumento = fechaDocumento;
         this.descripcion = descripcion;
@@ -33,11 +35,11 @@ public class Compras {
         this.numeroDocumento = numeroDocumento;
     }
 
-    public String getFechaDocumento() {
+    public Date getFechaDocumento() {
         return fechaDocumento;
     }
 
-    public void setFechaDocumento(String fechaDocumento) {
+    public void setFechaDocumento(Date fechaDocumento) {
         this.fechaDocumento = fechaDocumento;
     }
 

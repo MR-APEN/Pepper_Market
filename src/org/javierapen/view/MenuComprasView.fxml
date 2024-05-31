@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -11,7 +12,6 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="501.0" prefWidth="892.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.javierapen.controller.MenuComprasController">
    <children>
@@ -102,8 +102,8 @@
             <Label alignment="CENTER" text="Total Documento" textFill="#fafafa" GridPane.columnIndex="2" />
             <Label text="Fecha Documento" textFill="WHITE" GridPane.rowIndex="1" />
             <TextField fx:id="txtNumeroC" GridPane.columnIndex="1" />
-            <TextField fx:id="txtFechaC" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField fx:id="txtTotalC" prefHeight="26.0" prefWidth="22.0" GridPane.columnIndex="3" />
+            <DatePicker fx:id="datepFechaC" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
    </children>

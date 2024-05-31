@@ -143,7 +143,7 @@ public class MenuDetalleCompraController implements Initializable {
             ResultSet registro = procedimiento.executeQuery();
             while (registro.next()) {
                 resultado = new Compras(registro.getInt("numeroDocumento"),
-                        registro.getString("fechaDocumento"),
+                        registro.getDate("fechaDocumento"),
                         registro.getString("descripcion"),
                         registro.getDouble("totalDocumento")
                 );
@@ -202,7 +202,7 @@ public class MenuDetalleCompraController implements Initializable {
             ResultSet resultado = procedimiento.executeQuery();
             while (resultado.next()) {
                 lista.add(new Compras(resultado.getInt("numeroDocumento"),
-                        resultado.getString("fechaDocumento"),
+                        resultado.getDate("fechaDocumento"),
                         resultado.getString("descripcion"),
                         resultado.getDouble("totalDocumento")
                 ));
