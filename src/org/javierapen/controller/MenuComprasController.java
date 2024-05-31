@@ -273,18 +273,21 @@ public class MenuComprasController implements Initializable {
         txtNumeroC.setEditable(false);
         txtDescripcionC.setEditable(false);
         txtTotalC.setEditable(false);
+        datepFechaC.setDisable(true);
     }
 
     public void activarControllers() {
         txtNumeroC.setEditable(true);
         txtDescripcionC.setEditable(true);
         txtTotalC.setEditable(true);
+        datepFechaC.setDisable(false);
     }
 
     public void limpiarControllers() {
         txtNumeroC.clear();
         txtDescripcionC.clear();
         txtTotalC.clear();
+        datepFechaC.getEditor().clear();
     }
 
     public Main getEscenarioPrincipal() {

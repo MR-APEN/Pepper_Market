@@ -15,7 +15,7 @@ public class Conexion {
     public Conexion(){
         try{
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/DBPepperMarket?useSSL=false","japen", "2023128");
+            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/DBPepperMarket?useSSL=false","2023128_IN5BV", "abc123!!");
         }catch(ClassNotFoundException e){
             e.printStackTrace();
         }catch(InstantiationException e){

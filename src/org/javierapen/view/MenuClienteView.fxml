@@ -32,7 +32,7 @@
             <Image url="@../image/ClientesView.png" />
          </image>
       </ImageView>
-      <GridPane layoutX="41.0" layoutY="153.0" prefHeight="190.0" prefWidth="177.0">
+      <GridPane layoutX="41.0" layoutY="153.0" prefHeight="213.0" prefWidth="177.0">
          <columnConstraints>
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
          </columnConstraints>
@@ -96,7 +96,7 @@
             <TextField fx:id="txtTelefonoC" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <Button fx:id="btnRegresar" layoutX="-13.0" layoutY="-2.0" mnemonicParsing="false" onAction="#regresar" prefHeight="69.0" prefWidth="108.0" styleClass="table-row-cell" stylesheets="@../resource/PepperMarketCSS.css">
+      <Button fx:id="btnRegresar" layoutX="-13.0" layoutY="-2.0" mnemonicParsing="false" onAction="#regresar" prefHeight="85.0" prefWidth="91.0" styleClass="table-row-cell" stylesheets="@../resource/PepperMarketCSS.css">
          <graphic>
             <ImageView fitHeight="60.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -104,7 +104,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <TableView fx:id="tblClientes" layoutX="255.0" layoutY="224.0" onMouseClicked="#selecionarDatos" prefHeight="163.0" prefWidth="521.0" stylesheets="@../resource/PepperMarketCSS.css">
+      <TableView fx:id="tblClientes" layoutX="244.0" layoutY="237.0" onMouseClicked="#selecionarDatos" prefHeight="163.0" prefWidth="521.0">
          <columns>
             <TableColumn fx:id="colCodigoClienteC" prefWidth="50.0" text="codigoCliente" />
             <TableColumn fx:id="colNitC" prefWidth="60.0" text="nitCliente" />

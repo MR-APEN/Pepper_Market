@@ -310,7 +310,7 @@ Delimiter ;
 Delimiter $$
 	create procedure sp_EliminarTipoProducto(in codigoTipoProducto int)
     Begin
-		Delete from tipoproducto TP
+		Delete from tipoproducto 
         Where TP.codigoTipoProducto = codigoTipoProducto;
 	End $$
 Delimiter ;
@@ -558,7 +558,7 @@ Delimiter ;
 Delimiter $$
 	create procedure sp_EliminarDetalleCompra(in _codigoDetalleCompra int)
     Begin
-		Delete from DetalleCompra DC
+		Delete from DetalleCompra 
         Where codigoDetalleCompra = _codigoDetalleCompra;
 	End $$
 Delimiter ;
@@ -622,7 +622,7 @@ Delimiter ;
 Delimiter $$
 	create procedure sp_EliminarFactura(in numeroFactura int)
     Begin
-		Delete from Factura F
+		Delete from Factura 
         Where numeroFactura = numeroFactura;
 	End $$
 Delimiter ;
@@ -873,6 +873,8 @@ Delimiter $$
         where codigoTelefonoProveedor = _codigoTelefonoProveedor;
     End $$
 Delimiter ;
+-- -------------------------------------------------------------------------------------------------
+
 
 Delimiter $$
 	create function fn_CalcularPrecioUnitario( codigoProducto varchar(15)) 
@@ -996,6 +998,37 @@ Delimiter $$
 	End $$
 Delimiter ;	
 
+Delimiter $$
+	create trigger tr_InsertarPrecioDetalelFactura_Before_Insert
+    Before insert on DetalleFactura
+	for each row
+		Begin
+			set new.precioUnitario = (Select precioUnitario from Productos
+									  Where Productos.codigoProducto = new.codigoProducto);
+		End $$
+Delimiter ;
+
+Delimiter $$
+	create procedure sp_ActualizarTotalFactura(in _numeroFactura int , _totalFactura decimal(10,2))
+    Begin
+		Update Factura F
+        set
+		F.totalFactura = _totalFactura
+        Where F.numeroFactura = _numeroFactura;
+	End $$
+Delimiter ;
+
+Delimiter $$
+	Create trigger tr_InsertarTotalFactura_Before_Insert
+    after insert on DetalleFactura
+    for each row
+		Begin
+			declare total decimal(10,2);
+            set total = ((Select sum(precioUnitario*cantidad) from DetalleFactura where DetalleFactura.numeroFactura = new.numeroFactura));
+            call sp_ActualizarTotalFactura(new.numeroFactura, total);
+		End $$
+Delimiter ;
+    
 call sp_AgregarClientes(01,'180181','Harol','Luna','San Raymundo','28651030','harol@gmail.com');
 call sp_AgregarClientes(02,'117481','Rafael','Samayoa','Amatitlan','0121030','rafa@gmail.com');
 
