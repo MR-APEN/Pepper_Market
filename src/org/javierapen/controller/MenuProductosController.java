@@ -9,6 +9,8 @@ import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,6 +30,7 @@ import org.javierapen.bean.Productos;
 import org.javierapen.bean.Proveedor;
 import org.javierapen.bean.TipoProducto;
 import org.javierapen.db.Conexion;
+import org.javierapen.report.GenerarReportes;
 import org.javierapen.system.Main;
 
 /**
@@ -224,6 +227,9 @@ public class MenuProductosController implements Initializable {
 
     public void reporte() {
         switch (tipoDeOperaciones) {
+            case NINGUNO:
+                imprimirReporte();
+                break;
             case ACTUALIZAR:
                 desactivarControllers();
                 limpiarControllers();
@@ -236,6 +242,12 @@ public class MenuProductosController implements Initializable {
                 tipoDeOperaciones = operaciones.NINGUNO;
                 break;
         }
+    }
+
+    public void imprimirReporte() {
+        Map parametros = new HashMap();
+        parametros.put("codigoProducto", null);
+        GenerarReportes.mostrarReporte("ReporteProductos.jasper", "Reportes Productos", parametros);
     }
 
     public TipoProducto buscarTipoProducto(int codigoTipoProducto) {
