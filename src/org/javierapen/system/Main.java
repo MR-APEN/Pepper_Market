@@ -6,11 +6,13 @@
 package org.javierapen.system;
 
 import java.io.InputStream;
+import java.security.Principal;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.javierapen.controller.MenuCargoEmpleadoController;
@@ -44,6 +46,7 @@ public class Main extends Application {
     public void start(Stage escenarioPrincipal) throws Exception {
         this.escenarioPrincipal = escenarioPrincipal;
         this.escenarioPrincipal.setTitle("Pepper Market");
+        escenarioPrincipal.getIcons().add(new Image(Principal.class.getResourceAsStream("/org/javierapen/image/Logo2.png")));
         MenuLoginView();
 //Parent root = FXMLLoader.load(getClass().getResource("/org/javierapen/view/MenuPrincipalView.fxml"));
         //Scene escena = new Scene(root);
@@ -199,7 +202,6 @@ public class Main extends Application {
         try {
             MenuLoginController loginView = (MenuLoginController) cambiarEscena("MenuLoginView.fxml", 879, 550);
             loginView.setEscenarioPrincipal(this);
-            this.escenarioPrincipal.setTitle("Login de Usuarios");
         } catch (Exception e) {
             e.printStackTrace();
         }

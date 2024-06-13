@@ -129,7 +129,7 @@ create table DetalleFactura(
 
 create table Usuarios(
 	nombreUsuario varchar(45) not null,
-    contraseña varchar(100) not null,
+    contrasena varchar(100) not null,
     primary key PK_nombreUsuario(nombreUsuario)
 );
 
@@ -883,10 +883,10 @@ Delimiter ;
 -- ------------------------------------ USUARIOS ---------------------------------------------------
 -- ------------------------------------ AGREGAR ---------------------------------------------------
 Delimiter $$
-	create procedure sp_AgregarUsuario(in nombreUsuario varchar(45), in contraseña varchar(100), in nivelPermisos int)
+	create procedure sp_AgregarUsuario(in nombreUsuario varchar(45), in contrasena varchar(100))
     Begin
-		Insert Into Usuarios(nombreUsuario,contraseña,nivelPermisos)
-			values(nombreUsuario,contraseña,nivelPermisos);
+		Insert Into Usuarios(nombreUsuario,contrasena)
+			values(nombreUsuario,contrasena);
     End $$
 Delimiter ; 
 
@@ -896,8 +896,7 @@ Delimiter $$
     Begin
 		select 
 			U.nombreUsuario,
-            U.contraseña,
-            U.nivelPermisos
+            U.contrasena
 		from Usuarios U;
     End $$
 Delimiter ;
@@ -908,8 +907,7 @@ Delimiter $$
     Begin
 		select 
 			U.nombreUsuario,
-            U.contraseña,
-            U.nivelPermisos
+            U.contrasena
 		from Usuarios U
         where U.nombreUsuario = _nombreUsuario;
     End $$
@@ -917,12 +915,11 @@ Delimiter ;
 
 -- ------------------------------------ ACTUALIZAR ---------------------------------------------------
 Delimiter $$
-	create procedure sp_ActualizarUsuario(in _nombreUsuario varchar(45), in _contraseña varchar(100), in _nivelPermisos int)
+	create procedure sp_ActualizarUsuario(in _nombreUsuario varchar(45), in _contrasena varchar(100))
     Begin
 		update Usuarios U
 			set
-                U.contraseña = _contraseña,
-                U.nivelPermisos = _nivelPermisos
+                U.contrasena = _contrasena
 			where U.nombreUsuario = _nombreUsuario;
     End $$
 Delimiter ;
@@ -1134,6 +1131,7 @@ call sp_AgregarFactura(01,"Vigente",46.00,"2024-05-10",02,01);
 
 call sp_AgregarDetalleFactura(01,0.00,1,01,"ABC123");
 call sp_AgregarEmailProveedor(01,"juan@gmail.com","Proveedor Coca Cola Juan",01);
+call sp_AgregarUsuario("japen","2023128");
 
 
 call sp_ListarProductos();

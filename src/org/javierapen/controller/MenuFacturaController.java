@@ -215,8 +215,12 @@ public class MenuFacturaController implements Initializable {
     public void reporte() {
         switch (tipoDeOperaciones) {
             case NINGUNO:
-                imprimirReporte();
-                break;
+                if (tblFactura.getSelectionModel().getSelectedItem() == null) {
+                    JOptionPane.showMessageDialog(null, "Debe de seleccionar alguna factura");
+                } else {
+                    imprimirReporte();
+                    break;
+                }
             case ACTUALIZAR:
                 desactivarControles();
                 limpiarControles();
@@ -233,7 +237,7 @@ public class MenuFacturaController implements Initializable {
 
     public void imprimirReporte() {
         Map parametros = new HashMap();
-        parametros.put("numeroFactura", null);
+        parametros.put("numeroFactura", Integer.parseInt(txtNumeroF.getText()));
         GenerarReportes.mostrarReporte("ReporteFacturas.jasper", "Reportes Facturas", parametros);
     }
 

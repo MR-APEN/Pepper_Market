@@ -72,7 +72,7 @@ public class MenuLoginController implements Initializable {
                 contraseñaDB = registro.getString("contrasena");
                 if (txtContra.getText().equals(contraseñaDB)) {
 
-                    JOptionPane.showMessageDialog(null, "Bienvenid@ " + txtUsuario.getText());
+                    JOptionPane.showMessageDialog(null, "Bienvenido " + txtUsuario.getText());
                     escenarioPrincipal.menuPrincipalView();
                 } else {
                     JOptionPane.showMessageDialog(null, "Contraseña o usuario no coinciden", "Error usuario", 0);
