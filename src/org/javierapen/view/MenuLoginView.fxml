@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="879.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.javierapen.controller.MenuLoginController">
+   <children>
+      <ImageView fitHeight="574.0" fitWidth="879.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/MenuLoginView.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="txtUsuario" layoutX="490.0" layoutY="185.0" prefHeight="43.0" prefWidth="339.0" styleClass="transparent-text-field" stylesheets="@../resource/PepperMarketCSS.css" />
+      <Button fx:id="btnLogin" alignment="CENTER" contentDisplay="CENTER" layoutX="583.0" layoutY="393.0" mnemonicParsing="false" onAction="#buttonHandleEvent" prefHeight="43.0" prefWidth="151.0" styleClass="button1" stylesheets="@../resource/PepperMarketCSS.css" text="Login" textAlignment="CENTER">
+         <font>
+            <Font name="Gill Sans MT" size="23.0" />
+         </font>
+      </Button>
+      <PasswordField fx:id="txtContra" layoutX="490.0" layoutY="312.0" prefHeight="43.0" prefWidth="339.0" styleClass="transparent-text-field" stylesheets="@../resource/PepperMarketCSS.css" />
+   </children>
+</AnchorPane>

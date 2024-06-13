@@ -21,6 +21,7 @@ import org.javierapen.controller.MenuDetalleFacturaController;
 import org.javierapen.controller.MenuEmailProveedorController;
 import org.javierapen.controller.MenuEmpleadosController;
 import org.javierapen.controller.MenuFacturaController;
+import org.javierapen.controller.MenuLoginController;
 import org.javierapen.controller.MenuPrincipalController;
 import org.javierapen.controller.MenuProductosController;
 import org.javierapen.controller.MenuProgramadorController;
@@ -43,7 +44,7 @@ public class Main extends Application {
     public void start(Stage escenarioPrincipal) throws Exception {
         this.escenarioPrincipal = escenarioPrincipal;
         this.escenarioPrincipal.setTitle("Pepper Market");
-        menuPrincipalView();
+        MenuLoginView();
 //Parent root = FXMLLoader.load(getClass().getResource("/org/javierapen/view/MenuPrincipalView.fxml"));
         //Scene escena = new Scene(root);
         //escenarioPrincipal.setScene(escena);
@@ -175,21 +176,31 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
-    
-    public void MenuDetalleFacturaView(){
-        try{
-            MenuDetalleFacturaController MenuDetalleFacturaView = (MenuDetalleFacturaController) cambiarEscena("MenuDetalleFacturaView.fxml",942,532);
+
+    public void MenuDetalleFacturaView() {
+        try {
+            MenuDetalleFacturaController MenuDetalleFacturaView = (MenuDetalleFacturaController) cambiarEscena("MenuDetalleFacturaView.fxml", 942, 532);
             MenuDetalleFacturaView.setEscenarioPrincipal(this);
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
-    public void MenuEmailProveedorView(){
-        try{
-            MenuEmailProveedorController MenuEmailProveedorView = (MenuEmailProveedorController) cambiarEscena("MenuEmailProveedorView.fxml",945,533);
+
+    public void MenuEmailProveedorView() {
+        try {
+            MenuEmailProveedorController MenuEmailProveedorView = (MenuEmailProveedorController) cambiarEscena("MenuEmailProveedorView.fxml", 945, 533);
             MenuEmailProveedorView.setEscenarioPrincipal(this);
-        }catch (Exception e){
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void MenuLoginView() {
+        try {
+            MenuLoginController loginView = (MenuLoginController) cambiarEscena("MenuLoginView.fxml", 879, 550);
+            loginView.setEscenarioPrincipal(this);
+            this.escenarioPrincipal.setTitle("Login de Usuarios");
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

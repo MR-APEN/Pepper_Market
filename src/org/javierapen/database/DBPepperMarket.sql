@@ -127,6 +127,12 @@ create table DetalleFactura(
     constraint FK_DetalleFactura_Productos foreign key (codigoProducto) references Productos(codigoProducto)
 );
 
+create table Usuarios(
+	nombreUsuario varchar(45) not null,
+    contraseña varchar(100) not null,
+    primary key PK_nombreUsuario(nombreUsuario)
+);
+
 -- ---------------------------------------------- CLIENTES -----------------------------------------------------------------
 
 Delimiter $$
@@ -874,7 +880,63 @@ Delimiter $$
     End $$
 Delimiter ;
 -- -------------------------------------------------------------------------------------------------
+-- ------------------------------------ USUARIOS ---------------------------------------------------
+-- ------------------------------------ AGREGAR ---------------------------------------------------
+Delimiter $$
+	create procedure sp_AgregarUsuario(in nombreUsuario varchar(45), in contraseña varchar(100), in nivelPermisos int)
+    Begin
+		Insert Into Usuarios(nombreUsuario,contraseña,nivelPermisos)
+			values(nombreUsuario,contraseña,nivelPermisos);
+    End $$
+Delimiter ; 
 
+-- ------------------------------------ LISTAR ---------------------------------------------------
+Delimiter $$
+	create procedure sp_ListarUsuarios()
+    Begin
+		select 
+			U.nombreUsuario,
+            U.contraseña,
+            U.nivelPermisos
+		from Usuarios U;
+    End $$
+Delimiter ;
+
+-- ------------------------------------ BUSCAR ---------------------------------------------------
+Delimiter $$
+	create procedure sp_BuscarUsuario(in _nombreUsuario varchar(45))
+    Begin
+		select 
+			U.nombreUsuario,
+            U.contraseña,
+            U.nivelPermisos
+		from Usuarios U
+        where U.nombreUsuario = _nombreUsuario;
+    End $$
+Delimiter ;
+
+-- ------------------------------------ ACTUALIZAR ---------------------------------------------------
+Delimiter $$
+	create procedure sp_ActualizarUsuario(in _nombreUsuario varchar(45), in _contraseña varchar(100), in _nivelPermisos int)
+    Begin
+		update Usuarios U
+			set
+                U.contraseña = _contraseña,
+                U.nivelPermisos = _nivelPermisos
+			where U.nombreUsuario = _nombreUsuario;
+    End $$
+Delimiter ;
+
+-- ------------------------------------ ELIMINAR  ---------------------------------------------------
+Delimiter $$
+	create procedure sp_EliminarUsuario(in _nombreUsuario varchar(45))
+    Begin
+		delete from Usuarios 
+			where nombreUsuario = _nombreUsuario;
+    End $$
+Delimiter ;
+
+-- --------------------------------------------------------------------------------
 
 Delimiter $$
 	create function fn_CalcularPrecioUnitario( codigoProducto varchar(15)) 
