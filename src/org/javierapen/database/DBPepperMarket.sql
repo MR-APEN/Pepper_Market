@@ -1028,6 +1028,22 @@ Delimiter $$
             call sp_ActualizarTotalFactura(new.numeroFactura, total);
 		End $$
 Delimiter ;
+
+Delimiter $$
+	create procedure sp_ListarReporteFactura()
+	Begin
+		select Factura.numeroFactura, Factura.fechaFactura, Factura.totalFactura,
+			   Clientes.nitCliente, Clientes.nombreCliente, Clientes.apellidoCliente,
+               Empleados.nombreEmpleado,Empleados.apellidoEmpleado,Empleados.turno,
+               Productos.codigoProducto,Productos.descripcionProducto,
+               DetalleFactura.precioUnitario,DetalleFactura.cantidad
+               from DetalleFactura
+               inner join Factura on DetalleFactura.numeroFactura = Factura.numeroFactura
+               inner join Productos on Productos.codigoProducto = DetalleFactura.codigoProducto
+               inner join Empleados on Empleados.codigoEmpleado = Factura.codigoEmpleado
+               inner join Clientes on Clientes.codigoCliente = Factura.codigoCliente;
+	End $$
+Delimiter ;
     
 call sp_AgregarClientes(01,'180181','Harol','Luna','San Raymundo','28651030','harol@gmail.com');
 call sp_AgregarClientes(02,'117481','Rafael','Samayoa','Amatitlan','0121030','rafa@gmail.com');
@@ -1062,3 +1078,4 @@ call sp_ListarProductos();
 call sp_ListarCompras();
 call sp_ListarEmpleados();
 call sp_ListarTelefonoProveedor();
+call sp_ListarReporteFactura();

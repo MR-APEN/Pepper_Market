@@ -9,6 +9,8 @@ import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,6 +30,7 @@ import org.javierapen.bean.Clientes;
 import org.javierapen.bean.Empleados;
 import org.javierapen.bean.Facturas;
 import org.javierapen.db.Conexion;
+import org.javierapen.report.GenerarReportes;
 import org.javierapen.system.Main;
 
 /**
@@ -211,6 +214,9 @@ public class MenuFacturaController implements Initializable {
 
     public void reporte() {
         switch (tipoDeOperaciones) {
+            case NINGUNO:
+                imprimirReporte();
+                break;
             case ACTUALIZAR:
                 desactivarControles();
                 limpiarControles();
@@ -223,6 +229,12 @@ public class MenuFacturaController implements Initializable {
                 tipoDeOperaciones = operaciones.NINGUNO;
                 break;
         }
+    }
+
+    public void imprimirReporte() {
+        Map parametros = new HashMap();
+        parametros.put("numeroFactura", null);
+        GenerarReportes.mostrarReporte("ReporteFacturas.jasper", "Reportes Facturas", parametros);
     }
 
     public Empleados buscarEmpleado(int codigoEmpleado) {
