@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReportesProveedores" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9b1ca914-efad-41ab-8284-6ad2b18b2b7a">
-	<property name="ireport.zoom" value="0.7513148009015792"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="74"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReportesProveedores" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9b1ca914-efad-41ab-8284-6ad2b18b2b7a">
+	<property name="ireport.zoom" value="1.7715610000000086"/>
+	<property name="ireport.x" value="119"/>
+	<property name="ireport.y" value="142"/>
 	<queryString>
-		<![CDATA[call sp_ListarProveedores]]>
+		<![CDATA[call sp_ListarProveedores()]]>
 	</queryString>
 	<field name="codigoProveedor" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -31,10 +31,10 @@
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<background>
-		<band height="802" splitType="Stretch">
+		<band height="555">
 			<image>
-				<reportElement x="0" y="0" width="555" height="802" uuid="9c28e7d9-9563-46b1-9810-70295034b7b7"/>
-				<imageExpression><![CDATA["D:\\Pepper_Market\\Pepper_Market\\src\\org\\javierapen\\image\\Membrete Pepper.png"]]></imageExpression>
+				<reportElement x="0" y="0" width="802" height="555" uuid="1fe6981b-03e8-4a86-9eb1-00bf3e6b51f9"/>
+				<imageExpression><![CDATA["D:\\Pepper_Market\\Pepper_Market\\src\\org\\javierapen\\image\\MembretteProveedores.png"]]></imageExpression>
 			</image>
 		</band>
 	</background>
@@ -45,42 +45,30 @@
 		<band height="105" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="33" splitType="Stretch">
-			<staticText>
-				<reportElement x="12" y="0" width="100" height="20" uuid="12300097-c6b7-4ab5-a9b1-82d07e6b26e7"/>
-				<text><![CDATA[nitProveedor]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="136" y="0" width="100" height="20" uuid="afe81ac4-88bb-4cbb-a1c9-f72eab648dee"/>
-				<text><![CDATA[nombreProveedor]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="270" y="0" width="100" height="20" uuid="3313faf3-d6c5-434c-9e5f-c2a3e38690e8"/>
-				<text><![CDATA[direccionProveedor]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="399" y="0" width="100" height="20" uuid="28107abe-81bf-4bdf-9cb0-2422eb69a5ad"/>
-				<text><![CDATA[contactoPrincipal]]></text>
-			</staticText>
-		</band>
+		<band height="33" splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="46" splitType="Stretch">
+		<band height="25" splitType="Stretch">
 			<textField>
-				<reportElement x="12" y="0" width="100" height="20" uuid="6bfed6f1-14d0-45d2-b3ed-3d082bc1cdb1"/>
+				<reportElement x="46" y="0" width="100" height="20" uuid="0ff7a846-e6dc-4fd2-bd6a-80bf62c90375"/>
+				<textFieldExpression><![CDATA[$F{codigoProveedor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="152" y="0" width="100" height="20" uuid="716b8af1-fa94-43c2-9723-26df3b3563d5"/>
 				<textFieldExpression><![CDATA[$F{nitProveedor}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="136" y="0" width="100" height="20" uuid="6b93ffb4-a4a6-48ee-9403-e0a4fe46fe81"/>
-				<textFieldExpression><![CDATA[$F{nombreProveedor}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="270" y="0" width="100" height="20" uuid="a6b4c149-703b-40d4-9e16-ed54d5c719ee"/>
+				<reportElement x="596" y="0" width="145" height="20" uuid="94a50123-c173-44e3-b666-f3680ef3e89d"/>
 				<textFieldExpression><![CDATA[$F{direccionProveedor}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="399" y="0" width="100" height="20" uuid="8f5b0cc9-7163-4392-bded-0fa580375d43"/>
+				<reportElement x="397" y="0" width="192" height="20" uuid="044934d3-61cd-42df-86fe-5ca8c5cf93d6"/>
+				<textElement textAlignment="Justified"/>
 				<textFieldExpression><![CDATA[$F{contactoPrincipal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="267" y="0" width="100" height="20" uuid="81eebb71-7392-4808-b9ac-22af6babe839"/>
+				<textFieldExpression><![CDATA[$F{razonSocial}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

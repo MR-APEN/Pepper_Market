@@ -2,7 +2,7 @@
 create database DBPepperMarket;
 use DBPepperMarket;
 
- set global time_zone = "-06:00";
+-- set global time_zone = "-06:00";
 
 create table Clientes(
 	codigoCliente int not null,
