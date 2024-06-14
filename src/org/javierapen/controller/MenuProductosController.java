@@ -390,10 +390,10 @@ public class MenuProductosController implements Initializable {
             registro.setCodigoProveedor(((Proveedor) cmbProveedores.getSelectionModel().getSelectedItem()).getCodigoProveedor());
             registro.setCodigoTipoProducto(((TipoProducto) cmbTipoProducto.getSelectionModel().getSelectedItem()).getCodigoTipoProducto());
             registro.setDescripcionProducto(txtDescripcionP.getText());
-            registro.setPrecioDocena(Double.parseDouble(txtPrecioDocenaP.getText()));
-            registro.setPrecioUnitario(Double.parseDouble(txtPrecioUnitarioP.getText()));
-            registro.setPrecioMayor(Double.parseDouble(txtPrecioMayorP.getText()));
-            registro.setExistencia(Integer.parseInt(txtExistenciaP.getText()));
+            registro.setPrecioDocena(0);
+            registro.setPrecioUnitario(0);
+            registro.setPrecioMayor(0);
+            registro.setExistencia(0);
             procedimiento.setString(1, registro.getCodigoProducto());
             procedimiento.setString(2, registro.getDescripcionProducto());
             procedimiento.setDouble(3, registro.getPrecioUnitario());

@@ -3,10 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Informatica/Desktop/2023128_IN5BV/Pepper_Market/src/org/javierapen/database/DBPepperMarket.sql</file>
-            <file>file:/C:/Users/Informatica/Desktop/2023128_IN5BV/Pepper_Market/src/org/javierapen/db/Conexion.java</file>
-            <file>file:/C:/Users/Informatica/Desktop/2023128_IN5BV/Pepper_Market/src/org/javierapen/controller/MenuClienteController.java</file>
-            <file>file:/C:/Users/Informatica/Desktop/2023128_IN5BV/Pepper_Market/src/org/javierapen/report/GenerarReportes.java</file>
+            <file>file:/D:/Pepper_Market/Pepper_Market/src/org/javierapen/bean/Compras.java</file>
+            <file>file:/D:/Pepper_Market/Pepper_Market/src/org/javierapen/controller/MenuFacturaController.java</file>
+            <file>file:/D:/Pepper_Market/Pepper_Market/src/org/javierapen/report/GenerarReportes.java</file>
+            <file>file:/D:/Pepper_Market/Pepper_Market/src/org/javierapen/system/Main.java</file>
+            <file>file:/D:/Pepper_Market/Pepper_Market/src/org/javierapen/controller/MenuComprasController.java</file>
+            <file>file:/D:/Pepper_Market/Pepper_Market/src/org/javierapen/controller/MenuClienteController.java</file>
+            <file>file:/D:/Pepper_Market/Pepper_Market/src/org/javierapen/controller/MenuLoginController.java</file>
+            <file>file:/D:/Pepper_Market/Pepper_Market/src/org/javierapen/controller/MenuProductosController.java</file>
         </group>
     </open-files>
 </project-private>

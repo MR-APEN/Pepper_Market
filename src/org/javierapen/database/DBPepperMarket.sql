@@ -2,7 +2,7 @@
 create database DBPepperMarket;
 use DBPepperMarket;
 
--- set global time_zone = "-06:00";
+ set global time_zone = "-06:00";
 
 create table Clientes(
 	codigoCliente int not null,
@@ -1103,6 +1103,16 @@ Delimiter $$
                inner join Clientes on Clientes.codigoCliente = Factura.codigoCliente;
 	End $$
 Delimiter ;
+
+Delimiter $$
+	create procedure sp_ListarReporteProductos()
+    Begin
+		select Productos.codigoProducto, Productos.descripcionProducto, Productos.precioUnitario,
+        Productos.existencia, Proveedores.nitProveedor
+        From Productos 
+        inner join Proveedores on Productos.codigoProveedor = Proveedores.codigoProveedor;
+	End $$
+Delimiter ;
     
 call sp_AgregarClientes(01,'180181','Harol','Luna','San Raymundo','28651030','harol@gmail.com');
 call sp_AgregarClientes(02,'117481','Rafael','Samayoa','Amatitlan','0121030','rafa@gmail.com');
@@ -1110,7 +1120,7 @@ call sp_AgregarClientes(02,'117481','Rafael','Samayoa','Amatitlan','0121030','ra
 call sp_AgregarCargoEmpleado(01,"Gerente Administrativo","Control del local");
 
 call sp_AgregarTipoProducto(01,"Manzana Verde de EEUU");
-call sp_AgregaProveedores(01,"1233","JUAN","LOPEZ","Zona 12 Villa Nueva","Poder ser el mayor distribuidor","JUAN CARLOS 1111-2222","HTTP/COCACOLA");
+call sp_AgregaProveedores(01,"1233","JUAN","LOPEZ","Zona 12 Villa Nueva","FRUTAS.SA","JUAN CARLOS 1111-2222","HTTPS/FRUTS");
 call sp_AgregarTelefonoProveedor(01,"11112222","33335555","Todo Bien",01);
 
 call sp_AgregarCompras(01,"2024-02-12","Paquete de manzanas",199.99);
@@ -1139,3 +1149,4 @@ call sp_ListarCompras();
 call sp_ListarEmpleados();
 call sp_ListarTelefonoProveedor();
 call sp_ListarReporteFactura();
+call sp_ListarReporteProductos();
