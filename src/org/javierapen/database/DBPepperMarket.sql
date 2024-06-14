@@ -1,8 +1,8 @@
- drop database if exists DBPepperMarket;
+	drop database if exists DBPepperMarket;
 create database DBPepperMarket;
 use DBPepperMarket;
 
--- set global time_zone = "-06:00";
+ set global time_zone = "-06:00";
 
 create table Clientes(
 	codigoCliente int not null,
@@ -1116,31 +1116,123 @@ Delimiter ;
     
 call sp_AgregarClientes(01,'180181','Harol Anibal','Luna','San Raymundo','28651030','harol@gmail.com');
 call sp_AgregarClientes(02,'117481','Rafael Humberto','Samayoa','Amatitlan','0121030','rafa@gmail.com');
-
-call sp_AgregarCargoEmpleado(01,"Gerente Administrativo","Control del local");
-
-call sp_AgregarTipoProducto(01,"Manzana Verde de EEUU");
-call sp_AgregaProveedores(01,"1233","JUAN","LOPEZ","Zona 12 Villa Nueva","FRUTAS.SA","JUAN CARLOS 1111-2222","HTTPS/FRUTS");
-call sp_AgregarTelefonoProveedor(01,"11112222","33335555","Todo Bien",01);
-
-call sp_AgregarCompras(01,"2024-02-12","Paquete de manzanas",199.99);
-call sp_AgregarCompras(02,"2024-01-05","Paquete de mangos",149.99);
-
-call sp_AgregarProductos("ABC123","Manzana Verde",0.00,0.00,0.00,15,1,1);
-call sp_AgregarProductos("ABC122","Manzana Roja",0.00,0.00,0.00,10,1,1);
-call sp_AgregarProductos("ABC120","Manzana Amarilla",0.00,0.00,0.00,9,1,1);
+call sp_AgregarClientes(03,'12345678','Juan','Pérez','Calle 123, Ciudad','12345678','juan@example.com');
+call sp_AgregarClientes(04, '1002003004', 'Javier', 'García', 'Calle 89 #12-34, Ciudad', '45678901', 'javier.garcia@example.com');
+call sp_AgregarClientes(05, '1002003005', 'Sofía', 'López', 'Avenida 34 #56-78, Ciudad', '56789012', 'sofia.lopez@example.com');
+call sp_AgregarClientes(06, '1002003006', 'Daniel', 'Ramírez', 'Carrera 45 #67-89, Ciudad', '67890123', 'daniel.ramirez@example.com');
+call sp_AgregarClientes(07, '1002003007', 'Valeria', 'Pérez', 'Calle 56 #78-90, Ciudad', '78901234', 'valeria.perez@example.com');
+call sp_AgregarClientes(08, '1002003008', 'José', 'Rodríguez', 'Avenida 23 #45-67, Ciudad', '89012345', 'jose.rodriguez@example.com');
+call sp_AgregarClientes(09, '1002003009', 'Camila', 'Sánchez', 'Carrera 78 #12-34, Ciudad', '90123456', 'camila.sanchez@example.com');
+call sp_AgregarClientes(10, '1002003010', 'David', 'Gómez', 'Calle 12 #34-56, Ciudad', '01234567', 'david.gomez@example.com');
 
 
-call sp_AgregarDetalleCompras(01,12.00,2,"ABC123",1);
-call sp_AgregarDetalleCompras(02,12.00,1,"ABC122",1);
-call sp_AgregarDetalleCompras(03,10.00,1,"ABC120",1);
+call sp_AgregarCargoEmpleado(1, 'Gerente General', 'Lidera la empresa');
+call sp_AgregarCargoEmpleado(2, 'Director de Finanzas', 'Gestiona las finanzas');
+call sp_AgregarCargoEmpleado(3, 'Director de Recursos Humanos', 'Gestiona el personal');
+call sp_AgregarCargoEmpleado(4, 'Jefe de Ventas', 'Coordina el equipo de ventas');
+call sp_AgregarCargoEmpleado(5, 'Jefe de Marketing', 'Dirige las estrategias de marketing');
+call sp_AgregarCargoEmpleado(6, 'Desarrollador de Software', 'Desarrolla aplicaciones');
+call sp_AgregarCargoEmpleado(7, 'Analista de Datos', 'Analiza los datos de la empresa');
+call sp_AgregarCargoEmpleado(8, 'Soporte Técnico', 'Proporciona soporte técnico');
+call sp_AgregarCargoEmpleado(9, 'Representante de Ventas', 'Gestiona las ventas con clientes');
+call sp_AgregarCargoEmpleado(10, 'Asistente Administrativo', 'Apoya en tareas administrativas');
 
-call sp_AgregarEmpleados(01,"Javier","Apen",350.25,"Ciudad Quetzal","Vespetina", 01);
+call sp_AgregarTipoProducto(1, 'Frutas');
+call sp_AgregarTipoProducto(2, 'Carnes');
+call sp_AgregarTipoProducto(3, 'Ropa');
+call sp_AgregarTipoProducto(4, 'Bebidas');
+call sp_AgregarTipoProducto(5, 'Panadería');
+call sp_AgregarTipoProducto(6, 'Verduras');
+call sp_AgregarTipoProducto(7, 'Pescados');
+call sp_AgregarTipoProducto(8, 'Dulces');
+call sp_AgregarTipoProducto(9, 'Condimentos');
+call sp_AgregarTipoProducto(10, 'Cereales');
 
-call sp_AgregarFactura(01,"Vigente",46.00,"2024-05-10",02,01);
+call sp_AgregaProveedores(01,"12334503","JUAN","LOPEZ","Zona 12 Villa Nueva","FRUTAS.SA","JUAN CARLOS 1111-2222","HTTPS/FRUTS");
+call sp_AgregaProveedores(02, '0987654321', 'María', 'Pérez', 'Avenida 12 #34-56, Ciudad', 'Distribuciones Pérez', 'contacto@distribucionesperez.com', 'www.distribucionesperez.com');
+call sp_AgregaProveedores(03, '1122334455', 'Juan', 'Martínez', 'Calle 45 #67-89, Ciudad', 'Suministros Martínez', 'contacto@suministrosmartinez.com', 'www.suministrosmartinez.com');
+call sp_AgregaProveedores(04, '2233445566', 'Ana', 'López', 'Carrera 78 #12-34, Ciudad', 'López y Cía', 'contacto@lopezcia.com', 'www.lopezcia.com');
+call sp_AgregaProveedores(05, '3344556677', 'Luis', 'Hernández', 'Calle 89 #23-45, Ciudad', 'Hernández Proveedores', 'contacto@hernandezproveedores.com', 'www.hernandezproveedores.com');
+call sp_AgregaProveedores(06, '4455667788', 'Laura', 'García', 'Avenida 56 #78-90, Ciudad', 'García Distribuciones', 'contacto@garciadistribuciones.com', 'www.garciadistribuciones.com');
+call sp_AgregaProveedores(07, '5566778899', 'Jorge', 'Rodríguez', 'Carrera 12 #34-56, Ciudad', 'Rodríguez y Asociados', 'contacto@rodriguezyasociados.com', 'www.rodriguezyasociados.com');
+call sp_AgregaProveedores(08, '6677889900', 'Isabel', 'Ramírez', 'Calle 78 #12-34, Ciudad', 'Ramírez Servicios', 'contacto@ramirezservicios.com', 'www.ramirezservicios.com');
+call sp_AgregaProveedores(09, '7788990011', 'Roberto', 'Sánchez', 'Avenida 34 #56-78, Ciudad', 'Sánchez Proveedores', 'contacto@sanchezproveedores.com', 'www.sanchezproveedores.com');
+call sp_AgregaProveedores(10, '8899001122', 'Elena', 'Torres', 'Carrera 45 #67-89, Ciudad', 'Torres Suministros', 'contacto@torressuministros.com', 'www.torressuministros.com');
 
-call sp_AgregarDetalleFactura(01,0.00,1,01,"ABC123");
-call sp_AgregarEmailProveedor(01,"juan@gmail.com","Proveedor Coca Cola Juan",01);
+call sp_AgregarTelefonoProveedor(1, '12345678', '87654321', 'Teléfono principal y secundario', 1);
+call sp_AgregarTelefonoProveedor(2, '23456789', '98765432', 'Teléfono principal y secundario', 2);
+call sp_AgregarTelefonoProveedor(3, '34567890', '09876543', 'Teléfono principal y secundario', 3);
+call sp_AgregarTelefonoProveedor(4, '45678901', '10987654', 'Teléfono principal y secundario', 4);
+call sp_AgregarTelefonoProveedor(5, '56789012', '21098765', 'Teléfono principal y secundario', 5);
+call sp_AgregarTelefonoProveedor(6, '67890123', '32109876', 'Teléfono principal y secundario', 6);
+call sp_AgregarTelefonoProveedor(7, '78901234', '43210987', 'Teléfono principal y secundario', 7);
+call sp_AgregarTelefonoProveedor(8, '89012345', '54321098', 'Teléfono principal y secundario', 8);
+call sp_AgregarTelefonoProveedor(9, '90123456', '65432109', 'Teléfono principal y secundario', 9);
+call sp_AgregarTelefonoProveedor(10, '01234567', '76543210', 'Teléfono principal y secundario', 10);
+
+call sp_AgregarCompras(1, '2024-01-01', 'Compra de camiseta', 0.00);
+call sp_AgregarCompras(2, '2024-01-05', 'Compra de jeans', 0.00);
+call sp_AgregarCompras(3, '2024-01-10', 'Compra de gorra', 0.00);
+call sp_AgregarCompras(4, '2024-01-15', 'Compra de platanos', 0.00);
+call sp_AgregarCompras(5, '2024-01-20', 'Compra de naranjas', 0.00);
+call sp_AgregarCompras(6, '2024-01-25', 'Compra de uvas', 0.00);
+call sp_AgregarCompras(7, '2024-01-30', 'Compra de fresas', 0.00);
+call sp_AgregarCompras(8, '2024-02-04', 'Compra de Pechuga de pollo', 0.00);
+call sp_AgregarCompras(9, '2024-02-09', 'Compra de carne', 0.00);
+call sp_AgregarCompras(10, '2024-02-14', 'Compra de chuletas', 0.00);
+
+call sp_AgregarProductos('P001', 'Camiseta básica', 0.00, 0.00, 0.00, 0,3,1);
+call sp_AgregarProductos('P002', 'Jeans clásicos', 0.00, 0.00, 0.00, 0,3,3);
+call sp_AgregarProductos('P003', 'Gorra ajustable', 0.00, 0.00, 0.00, 0,3,4);
+call sp_AgregarProductos('P004', 'Plátanos', 0.00, 0.00, 0.00, 0,1,2);
+call sp_AgregarProductos('P005', 'Naranjas', 0.00, 0.00, 0.00, 0,1,5);
+call sp_AgregarProductos('P006', 'Uvas', 0.00, 0.00, 0.00, 0,1,6);
+call sp_AgregarProductos('P007', 'Fresas', 0.00, 0.00, 0.00, 0,1,7);
+call sp_AgregarProductos('P008', 'Pechuga de pollo', 0.00, 0.00, 0.00, 0,2,8);
+call sp_AgregarProductos('P009', 'Carne de res', 0.00, 0.00, 0.00, 0,2,9);
+call sp_AgregarProductos('P010', 'Chuletas de cerdo', 0.00, 0.00, 0.00, 0,2,10);
+
+call sp_AgregarDetalleCompras(1, 25.00, 10, 'P001', 1);
+call sp_AgregarDetalleCompras(2, 35.50, 5, 'P002', 2);
+call sp_AgregarDetalleCompras(3, 15.00, 20, 'P003', 3);
+call sp_AgregarDetalleCompras(4, 12.75, 25, 'P004', 4);
+call sp_AgregarDetalleCompras(5, 5.00, 40, 'P005', 5);
+call sp_AgregarDetalleCompras(6, 20.00, 10, 'P006', 6);
+call sp_AgregarDetalleCompras(7, 25.50, 8, 'P007', 7);
+call sp_AgregarDetalleCompras(8, 18.00, 12, 'P008', 8);
+call sp_AgregarDetalleCompras(9, 7.50, 35, 'P009', 9);
+call sp_AgregarDetalleCompras(10, 30.00, 15, 'P010', 10);
+
+call sp_AgregarEmpleados(1, 'Juan', 'Gómez', 1500.00, 'Calle Principal 123', 'Mañana', 1);
+call sp_AgregarEmpleados(2, 'María', 'López', 1600.00, 'Avenida Central 456', 'Tarde', 2);
+call sp_AgregarEmpleados(3, 'Carlos', 'Martínez', 1400.00, 'Carrera 7 Este 789', 'Noche', 3);
+call sp_AgregarEmpleados(4, 'Ana', 'Rodríguez', 1700.00, 'Calle 10 Sur 234', 'Mañana', 4);
+call sp_AgregarEmpleados(5, 'Pedro', 'García', 1550.00, 'Avenida Norte 567', 'Tarde', 5);
+call sp_AgregarEmpleados(6, 'Luisa', 'Pérez', 1450.00, 'Calle 20 Oeste 890', 'Noche', 6);
+call sp_AgregarEmpleados(7, 'Laura', 'González', 1600.00, 'Avenida 30 Norte 123', 'Mañana', 7);
+call sp_AgregarEmpleados(8, 'Javier', 'Hernández', 1650.00, 'Carrera 15 Este 456', 'Tarde', 8);
+call sp_AgregarEmpleados(9, 'Sofía', 'Díaz', 1550.00, 'Calle 25 Sur 789', 'Noche', 9);
+call sp_AgregarEmpleados(10, 'Daniel', 'Sanchez', 1700.00, 'Avenida 40 Norte 234', 'Mañana', 10);
+
+call sp_AgregarFactura(1, 'Pagada', 0.00, '2024-06-14', 1, 1);
+call sp_AgregarFactura(2, 'Pendiente', 0.00, '2024-06-13', 2, 2);
+call sp_AgregarFactura(3, 'Anulada', 0.00, '2024-06-12', 3, 3);
+call sp_AgregarFactura(4, 'Pagada', 0.00, '2024-06-11', 4, 4);
+call sp_AgregarFactura(5, 'Pendiente', 0.00, '2024-06-10', 5, 5);
+
+call sp_AgregarDetalleFactura(01,0.00,3,01,"P001");
+call sp_AgregarDetalleFactura(02,0.00,5,01,"P002");
+call sp_AgregarDetalleFactura(03,0.00,6,02,"P003");
+call sp_AgregarDetalleFactura(04,0.00,2,02,"P004");
+call sp_AgregarDetalleFactura(05,0.00,2,05,"P005");
+
+call sp_AgregarEmailProveedor(1, 'contacto1@proveedor.com', 'Email principal del proveedor 1', 1);
+call sp_AgregarEmailProveedor(2, 'ventas1@proveedor.com', 'Email de ventas del proveedor 1', 1);
+call sp_AgregarEmailProveedor(3, 'contacto2@proveedor.com', 'Email principal del proveedor 2', 2);
+call sp_AgregarEmailProveedor(4, 'ventas2@proveedor.com', 'Email de ventas del proveedor 2', 2);
+call sp_AgregarEmailProveedor(5, 'contacto3@proveedor.com', 'Email principal del proveedor 3', 3);
+call sp_AgregarEmailProveedor(6, 'ventas3@proveedor.com', 'Email de ventas del proveedor 3', 3);
+
 call sp_AgregarUsuario("japen","2023128");
 
 
