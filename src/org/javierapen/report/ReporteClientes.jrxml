@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteClientes" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8893b4ec-edf4-4594-bb54-ebf512f09933">
-	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="994"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteClientes" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8893b4ec-edf4-4594-bb54-ebf512f09933">
+	<property name="ireport.zoom" value="1.4641000000000015"/>
+	<property name="ireport.x" value="242"/>
+	<property name="ireport.y" value="206"/>
 	<queryString>
 		<![CDATA[call sp_ListarClientes]]>
 	</queryString>
@@ -28,10 +28,10 @@
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<background>
-		<band height="802" splitType="Stretch">
-			<image isLazy="true">
-				<reportElement x="0" y="0" width="555" height="802" uuid="6b7a0c8e-d7b8-4a02-aa2e-52cd5c7621e3"/>
-				<imageExpression><![CDATA["C:\\Users\\Informatica\\Desktop\\2023128_IN5BV\\Pepper_Market\\src\\org\\javierapen\\image\\Membrete Pepper.png"]]></imageExpression>
+		<band height="555">
+			<image>
+				<reportElement x="0" y="0" width="802" height="555" uuid="2655fa76-5bb6-4dd1-984c-e4c214ab1ba2"/>
+				<imageExpression><![CDATA["D:\\Pepper_Market\\Pepper_Market\\src\\org\\javierapen\\image\\MembretteClientes.png"]]></imageExpression>
 			</image>
 		</band>
 	</background>
@@ -39,45 +39,34 @@
 		<band height="79" splitType="Stretch"/>
 	</title>
 	<pageHeader>
-		<band height="145" splitType="Stretch"/>
+		<band height="130" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="26" splitType="Stretch">
-			<staticText>
-				<reportElement x="37" y="0" width="100" height="20" uuid="1d08142c-544d-4e5e-98c8-733e45b55632"/>
-				<text><![CDATA[nitCliente]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="175" y="0" width="100" height="20" uuid="19030bf4-82db-439a-971f-89828f98ebd5"/>
-				<text><![CDATA[nombreCliente]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="304" y="0" width="100" height="20" uuid="76dee9b3-cb2c-4cda-93c9-814c1f48ac96"/>
-				<text><![CDATA[apellidoCliente]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="443" y="0" width="100" height="20" uuid="7eb539c5-8553-4215-bf84-9c3aaf74f967"/>
-				<text><![CDATA[correoCliente]]></text>
-			</staticText>
-		</band>
+		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="45" splitType="Stretch">
+		<band height="28" splitType="Stretch">
 			<textField>
-				<reportElement x="37" y="20" width="100" height="20" uuid="d6223d9b-59bb-455f-8abf-5d96ae98d134"/>
+				<reportElement x="35" y="0" width="100" height="20" uuid="d6223d9b-59bb-455f-8abf-5d96ae98d134"/>
 				<textFieldExpression><![CDATA[$F{nitCliente}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="175" y="20" width="100" height="20" uuid="5ea7b103-cd29-4ba9-80b8-10c2f20b61af"/>
+				<reportElement x="155" y="0" width="100" height="20" uuid="5ea7b103-cd29-4ba9-80b8-10c2f20b61af"/>
+				<textElement textAlignment="Justified"/>
 				<textFieldExpression><![CDATA[$F{nombreCliente}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="304" y="20" width="100" height="20" uuid="8b1697f0-6123-42d5-a588-a4bd53c5b34d"/>
-				<textFieldExpression><![CDATA[$F{apellidoCliente}]]></textFieldExpression>
+				<reportElement x="461" y="3" width="100" height="20" uuid="9f6b3115-ca6b-4737-b9e3-2f3c767b7654"/>
+				<textFieldExpression><![CDATA[$F{telefonoCliente}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="443" y="20" width="100" height="20" uuid="70ba0f5a-9d86-41e9-bc44-3d9b87b5a8d9"/>
-				<textFieldExpression><![CDATA[$F{correoCliente}]]></textFieldExpression>
+				<reportElement x="613" y="0" width="148" height="20" uuid="b7eff4bd-cff2-4d74-8d7d-9a8c5733b5bb"/>
+				<textFieldExpression><![CDATA[$F{direccionCliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="316" y="0" width="100" height="20" uuid="8b1697f0-6123-42d5-a588-a4bd53c5b34d"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA[$F{apellidoCliente}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
