@@ -1114,8 +1114,8 @@ Delimiter $$
 	End $$
 Delimiter ;
     
-call sp_AgregarClientes(01,'180181','Harol','Luna','San Raymundo','28651030','harol@gmail.com');
-call sp_AgregarClientes(02,'117481','Rafael','Samayoa','Amatitlan','0121030','rafa@gmail.com');
+call sp_AgregarClientes(01,'180181','Harol Anibal','Luna','San Raymundo','28651030','harol@gmail.com');
+call sp_AgregarClientes(02,'117481','Rafael Humberto','Samayoa','Amatitlan','0121030','rafa@gmail.com');
 
 call sp_AgregarCargoEmpleado(01,"Gerente Administrativo","Control del local");
 
